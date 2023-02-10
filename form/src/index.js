@@ -1,7 +1,7 @@
 import React from 'react';
 import 'normalize.css';
 import ReactDOM from 'react-dom/client';
-import { HashRouter, Routes, Route, BrowserRouter} from "react-router-dom";
+import { HashRouter, Routes, Route} from "react-router-dom";
 import Home from './components/Home'
 import Step2 from './components/Step2'
 import Step3 from './components/Step3'
