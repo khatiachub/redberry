@@ -61,6 +61,13 @@ import-normalize /* bring in normalize.css styles */
     object-fit: cover;
     border-radius: 133px;
     margin-top: 50px;
+border: 0;
+}
+.cv-photo:not([src]) {
+    content:url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+}
+*{
+    box-sizing: border-box;
 }
 .cv-block{
     max-width: 662px;
@@ -74,6 +81,7 @@ import-normalize /* bring in normalize.css styles */
     color: #F93B1D;
     line-height: 42px;
     margin-top: 68px;
+    word-break: break-all;
 }
 .cv-about{
     font-size: 18px;
@@ -88,6 +96,7 @@ import-normalize /* bring in normalize.css styles */
     color: #1A1A1A;
     line-height: 21px;
     margin-top: 17px;
+    word-break: break-all;
 }
 .cv-number{
     font-size: 18px;
@@ -95,6 +104,7 @@ import-normalize /* bring in normalize.css styles */
     color: #1A1A1A;
     line-height: 21px;
     margin-top: 10px;
+    word-break: break-all;
 }
 .staricon{
     position: absolute;
@@ -132,6 +142,7 @@ import-normalize /* bring in normalize.css styles */
 .image-label{
     margin-top: 54px;
     width: 232px;
+    color: #000;
 }
 .text-label{
     margin-top: 54px;
@@ -204,6 +215,28 @@ textarea::placeholder{
 .redborder{
     border: 1px solid #ef5050;
 }
+.label-red{
+    color: #ef5050;
+}
+.textarea{
+    max-width: 798px;
+    width: 100%;
+    height: 103px;
+    border: 1px solid #BCBCBC;
+    border-radius: 4px;
+    background-color: #fff;
+}
+.text{
+    height: 123px;
+}
+.red-textarea{
+    max-width: 798px;
+    width: 100%;
+    height: 103px;
+    border: 1px solid #ef5050;
+    border-radius: 4px;
+    background-color: #fff;
+}
 .red-border{
     max-width: 798px;
     width: 100%;
@@ -211,15 +244,6 @@ textarea::placeholder{
     border: 1px solid #ef5050;
     border-radius: 4px;
     background-color: #fff;
-}
-.green{
-    max-width: 371px;
-    width: 100%;
-    height: 48px;
-    border: 1px solid #ef5050;
-    border-radius: 4px;
-    background-color: #fff;
-    border: 1px solid #08be45;
 }
 .red-icon{
     display: none;
@@ -233,8 +257,8 @@ textarea::placeholder{
     width: 21px;
     height: 18px;
     position: absolute;
-    right: -26px;
-    top:35px;
+    right: -30px;
+    top:40px;
 }
 .red-icon-blocks{
     display: block;
@@ -244,13 +268,21 @@ textarea::placeholder{
     right: -26px;
     top:20px;
 }
-.textarea{
-    max-width: 798px;
-    width: 100%;
-    height: 103px;
-    border: 1px solid #BCBCBC;
-    border-radius: 4px;
-    background-color: #fff;
+.red-icons{
+    display: block;
+    width: 21px;
+    height: 18px;
+    position: absolute;
+    right: -26px;
+    top:40px;
+}
+.red-icon-date{
+    display: block;
+    width: 21px;
+    height: 18px;
+    position: absolute;
+    right: -30px;
+    top:70px;
 }
 .input-email{
     max-width: 798px;
@@ -269,22 +301,6 @@ textarea::placeholder{
 }
 .image-input{
     display: none;
-}
-.button{
-    width: 151px;
-    height: 48px;
-    background-color: #6B40E3;
-    margin-top: 160px;
-    margin-left: 647px;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-}
-button{
-    cursor: pointer;
 }
 /* .image-input{ */
     /* display: none; */
@@ -333,7 +349,7 @@ button{
     max-width: 900px;
     width: 100%;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     margin-left: 48px;
     margin-top: 47px;
 }
@@ -343,7 +359,7 @@ button{
     width: 100%;
     justify-content: space-between;
     align-items: baseline;
-    height: 25px;
+    height: 60px;
     border-bottom: 1px solid  #1A1A1A;
 }
 *{
@@ -362,6 +378,22 @@ button{
     line-height: 19.54px;
     color: #fff;
 }
+.button{
+    width: 151px;
+    height: 48px;
+    background-color: #6B40E3;
+    margin-top: 100px;
+    margin-left: 647px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+}
+button{
+    cursor: pointer;
+}
 .button-back{
     background-color:#6B40E3;
     width: 113px;
@@ -372,13 +404,15 @@ button{
     font-weight: 500;
     line-height: 19.54px;
     color: #fff;
+    margin-top: 0px;
 }
 .buttons-div{
     display: flex;
-    margin-top: 115px;
+    margin-top: 70px;
 }
 .button-next{
-    margin-top: 0;
+    margin-top: 0px;
+    padding: 0 20px 0 20px;
 }
 .line{
     max-width: 798px;
@@ -386,9 +420,6 @@ button{
     height: 1px;
     background-color: #C1C1C1;
     margin-top: 58px;
-}
-.text{
-    height: 123px;
 }
 
 /* home */
@@ -430,8 +461,7 @@ button{
     font-size: 20px;
     line-height: 24px;
     text-decoration: none;
-    max-width: 464px;
-    width: 100%;
+    width: 464px;
     height: 60px;
     background-color: #1A1A1A;
     border-radius: 8px;
@@ -442,4 +472,5 @@ button{
     position: absolute;
     display: flex;
     justify-content: center;
+    align-items: center;
 }

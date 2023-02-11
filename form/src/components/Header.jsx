@@ -6,6 +6,7 @@ export default function Header(props){
     const handleClick=()=>{
         nav('/');
         localStorage.removeItem('value')
+        localStorage.removeItem('recent-image')
 
     }
     return(

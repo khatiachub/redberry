@@ -5,12 +5,10 @@ import '../App.css'
 import { useEffect, useState } from 'react';
 import staricon from '../images/1.png'
 import Cv from './Cv';
-
-
-
+import redicon from '../images/v.png'
 
 export default function Step2(){
-  const { register, handleSubmit, watch,reset, formState: { errors,control } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors} } = useForm();
   const nav=useNavigate();
   const location=useLocation();
   console.log(location.state)
@@ -29,6 +27,7 @@ export default function Step2(){
       textarea:location.state.textarea,
       email:location.state.email,
       number:location.state.number,
+      image:location.state.image,
       exp:state.exp,
       edu:state.edu,
       datestart:state.datestart,
@@ -49,6 +48,17 @@ export default function Step2(){
       text:location.state.text
     }})
   }
+// const[image,setImage]=useState(location.state.url)
+  // useEffect(() => {
+    // const data = (localStorage.getItem('recent-image'));
+    // if (data) {
+      // setImage(data);
+    // }
+  // }, []);
+  // useEffect(() => {
+    // localStorage.setItem('recent-image', (image));
+  // }, [image]);
+  console.log(location.state.url);
 
   const handleChange=(e)=>{
     const name=e.target.name
@@ -77,11 +87,12 @@ export default function Step2(){
         <div className='form-wraper'>
            <Header heading='გამოცდილება' pages='2\3'/>
            <form className='form' action="" onSubmit={handleSubmit(onClick)}>
-            <label htmlFor="">თანამდებობა</label>
+            <label className={`${errors.exp?'label-red':''}`} htmlFor="">თანამდებობა</label>
+             <div className='icon-wraper'>
              <input
              value={state.exp}
              name='exp'
-             className='input-email'
+             className={`${errors.exp ? 'red-border' : 'input-email'}`}
              placeholder='დეველოპერი, დიზაინერი, ა.შ.'
               type="text" 
               {...exp}
@@ -90,12 +101,18 @@ export default function Step2(){
                 handleChange(e); 
               }}
               />
+              <img className={`red-icon ${errors.exp ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon" />
+              </div>
               <p className='name-criteria'>მინიმუმ 2 სიმბოლო</p>
-              <label className='email-label' htmlFor="">დამსაქმებელი</label>
+              <label
+              className={`${errors.edu?'label-red':''}`}
+              style={{marginTop:33}}
+              htmlFor="">დამსაქმებელი</label>
+              <div className='icon-wraper'>
              <input
              value={state.edu}
              name='edu'
-             className='input-email'
+             className={`${errors.edu ? 'red-border' : 'input-email'}`}
              placeholder='დამსაქმებელი'
               type="text" 
               {...edu}
@@ -104,49 +121,67 @@ export default function Step2(){
                 handleChange(e); 
               }}
               />
+              <img className={`red-icon ${errors.edu ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon" />
+              </div>
               <p className='name-criteria'>მინიმუმ 2 სიმბოლო</p>
               <div className='input-name-div'>
                 <div className='namediv'>
-                   <label className='email-label' htmlFor="">დაწყების რიცხვი</label>
+                   <label 
+                   className={`${errors.datestart?'label-red':''}`}
+                   style={{marginTop:33}}
+                   htmlFor="">დაწყების რიცხვი</label>
                    <input
                    value={state.datestart}
                    name='datestart'
                     type="date" 
-                    className='input-name'
+                    className={`input-name ${errors.datestart ? 'red' : 'input-name'}`}
                     {...datestart}
                     onChange={(e) => {
                       datestart.onChange(e); 
                       handleChange(e); 
                     }}
                     />
+                   <img className={`red-icon ${errors.datestart ? 'red-icon-date' : 'red-icon'}`} src={redicon} alt="red icon" />
                 </div>
                 <div className='namediv'>
-                    <label className='email-label' htmlFor="">დამთავრების რიცხვი</label>
+                    <label 
+                    className={`${errors.dateend?'label-red':''}`}
+                    style={{marginTop:33}}                    
+                    htmlFor="">დამთავრების რიცხვი
+                    </label>
                     <input 
                     value={state.dateend}
                     name='dateend'
                     type="date" 
-                    className='input-name'
+                    className={`input-name ${errors.dateend ? 'red' : 'input-name'}`}
                     {...dateend}
                     onChange={(e) => {
                       dateend.onChange(e); 
                       handleChange(e); 
                     }}
                     />
+                    <img className={`red-icon ${errors.dateend ? 'red-icon-date' : 'red-icon'}`} src={redicon} alt="red icon" />
                 </div>
               </div>
-              <label className='email-label' htmlFor="">აღწერა</label>
+              <label 
+              className={`${errors.textareas?'label-red':''}`}
+              style={{marginTop:33}}              
+              htmlFor="">აღწერა
+              </label>
+              <div className='icon-wraper'>
               <textarea
               value={state.textareas}
               name='textareas'
-               className='textarea text' 
-               placeholder='როლი თანამდებობაზე და ზოგადი აღწერა'
+              className={`textarea text ${errors.textareas ? 'red-textarea' : 'textarea text'}`}
+              placeholder='როლი თანამდებობაზე და ზოგადი აღწერა'
                {...textareas}
                onChange={(e) => {
                 textareas.onChange(e); 
                 handleChange(e); 
               }}
                />
+              <img className={`red-icon ${errors.textareas ? 'red-icons' : 'red-icon'}`} src={redicon} alt="red icon" />
+              </div>
               <div className='line'></div>
               <button type='button' className='exp-button'>მეტი გამოცდილების დამატება</button>
               <div className='buttons-div'>
@@ -161,6 +196,7 @@ export default function Step2(){
        <Cv
          firstName={location.state.firstName}
          lastName={location.state.lastName}
+         url={location.state.image}
          email={location.state.email}
          number={location.state.number}
          textarea={location.state.textarea}
