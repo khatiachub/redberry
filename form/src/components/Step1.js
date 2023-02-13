@@ -12,11 +12,9 @@ import redicon from '../images/v.png'
 function Step1() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: "all" });
   const nav = useNavigate();
-
-
+  const [url, setUrl] = useState('');
   const location = useLocation()
-  console.log(location);
-  const [data, setData] = useState(location.state)
+  const [datta, setData] = useState(location.state)
   const [value, setValues] = useState({
     firstName: '',
     lastName: '',
@@ -24,8 +22,17 @@ function Step1() {
     email: '',
     number: '',
   })
-  const [url, setUrl] = useState('');
-  const uploader = (file) => {
+
+  const handleChange = (e) => {
+    const name=e.target.name
+    const val=e.target.value
+    setValues({...value,[name]:val});
+}
+
+const uploadImage=(e)=>{
+  upLoader(e.target.files[0]);
+}
+  const upLoader = (file) => {
     const reader = new FileReader();
     reader.addEventListener('load', () => {
       localStorage.setItem('recent-image', reader.result);
@@ -33,18 +40,11 @@ function Step1() {
     })
     reader.readAsDataURL(file);
   }
+ 
   useEffect(() => {
     setUrl(localStorage.getItem('recent-image'));
-  }, [])
-
-  const handleChange = (e) => {
-      const name=e.target.name
-      const val=e.target.value
-      setValues({...value,[name]:val}
-      )
-    uploader(e.target.files[0])
-  }
-
+   },[])
+     
   const onClick = () => {
     nav('/Step2', {
       state: {
@@ -56,31 +56,27 @@ function Step1() {
         image:url
       }
     })
-    if(!url){
-      alert('choose fucking photo')
-      return null
-    }else{
-      console.log('22');
-    }
   }
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem('value'));
-    if (data) {
-      setValues(data);
+    const dataImg = JSON.parse(localStorage.getItem('value'));
+    if (dataImg) {
+      setValues(dataImg);
     }
   }, []);
   useEffect(() => {
     localStorage.setItem('value', JSON.stringify(value));
   }, [value]);
+
+
   const firstName = register('firstName', { required: true, pattern: /^[ა-ჰა-ჰ]+$/i, minLength: 2 })
   const lastName = register('lastName', { pattern: /^[ა-ჰა-ჰ]+$/i, required: true, minLength: 2 })
-  const images = register('image', { })
-  const number = register('number', { required: true, pattern:/^(\+?995)?(79\d{7}|5\d{8})$/})
+  const images = register('image', {required:true })
+  const number = register('number', { required: true, pattern:/^(\+?995)?(79\d{7}|5\d{8})$/ })
   const email = register('email', { required: true, pattern: /^[A-Za-z0-9._%+-]+@redberry\.ge$/ })
   return (
     <div className="form-div">
       <div className="form-wraper">
-        <Header heading='პირადი ინფო' pages='1\3' />
+      <Header heading='პირადი ინფო' pages='1\3' />
         <form className="form" onSubmit={handleSubmit(onClick)}>
           <div className="input-name-div">
             <div className="namediv">
@@ -130,6 +126,7 @@ function Step1() {
               onChange={(e) => {
                 images.onChange(e);
                 handleChange(e);
+                uploadImage(e);
               }}
             />
           </div>
@@ -190,9 +187,11 @@ function Step1() {
             {value.textarea ? <h2 className="cv-about">ჩემს შესახებ</h2> : null}
             <p className="cv-textarea">{value.textarea}</p>
           </div>
-          <img className="cv-photo" src={url} />
+          <img className="cv-photo" src={ url} />
         </div>
-        {data === null ? null :
+        {value.textarea?<div className="cv-line"></div>:null}
+
+        {datta === null ? null :
           <>
             <div className='cv-block'>
               <div className='cv-wrap'>
@@ -201,6 +200,16 @@ function Step1() {
                 <h6 className='cv-dates'>{location.state.datestart} {location.state.dateend}</h6>
                 <p className='cv-paragraph'>{location.state.textareas}</p>
               </div>
+              {location.state.textareas?<div className="cv-line2"></div>:null}
+
+            </div>
+            <div className='cv-block'>
+            <div className='cv-wrap'>
+                  {/* {location.state.extraexp?<h2 style={{marginTop:50}} className='cv-about'>გამოცდილება</h2>:null} */}
+                  <h5 className='cv-number'>{location.state.extraedu}, {location.state.extraexp}</h5>
+                  <h6 className='cv-dates'>{location.state.extradatestart}, {location.state.extradateend}</h6>
+                  <p className='cv-paragraph'>{location.state.extratextareas}</p>
+             </div>
             </div>
             <div className='cv-block'>
               <div className='cv-wrap'>
@@ -210,6 +219,7 @@ function Step1() {
                 <p className='cv-paragraph'>{location.state.text}</p>
               </div>
             </div>
+            {location.state.text?<div className="cv-line"></div>:null}
           </>}
       </div>
     </div>

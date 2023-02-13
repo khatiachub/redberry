@@ -6,30 +6,81 @@ import-normalize /* bring in normalize.css styles */
 .form-wraper{
     max-width: 1098px;
     width: 100%;
+    overflow: hidden;
 }
 .form-div{
     display: flex;
     background-color: #fafafa;
     width: 100%;
-    height: 1080px;
     justify-content: space-between;
+    padding-bottom: 30px;
 }
 .cv-wraper{
     background-color: #fff;
     max-width: 822px;
     width: 100%;
-    height: 1080px;
     position: relative;
     overflow: hidden;
+    padding-bottom: 30px;
+    height: 1080px;
 }
 .cv-line{
     background: #C8C8C8;
     max-width: 662px;
     width: 100%;
-    top: 32%;
+    top: 34%;
     height: 1px;
     position: absolute;
     margin-left: 82px;
+}
+.cv-line3{
+    background: #C8C8C8;
+    max-width: 662px;
+    width: 100%;
+    top: 45%;
+    height: 1px;
+    position: absolute;
+    margin-left: 82px;
+}
+.cv-line4{
+    background: #C8C8C8;
+    max-width: 662px;
+    width: 100%;
+    top: 30%;
+    height: 1px;
+    position: absolute;
+    margin-left: 82px;
+}
+.experienc{
+    width: 100%;
+    margin-right: 30%;
+}
+.newform{
+    margin-left: 0px;
+    width: 100%;
+}
+.cv-line5{
+    background: #C8C8C8;
+    max-width: 662px;
+    width: 100%;
+    top: 38%;
+    height: 1px;
+    position: absolute;
+    margin-left: 82px;
+}
+.cv-line2{
+    background: #C8C8C8;
+    max-width: 662px;
+    width: 100%;
+    top: 75%;
+    height: 1px;
+    position: absolute;
+    margin-left: 82px;
+}
+.buttons{
+    max-width: 798px;
+    width: 100%;
+    margin: 0 auto;
 }
 .cv-wraper-resium{
     border: 0.8px solid #474747;
@@ -43,17 +94,17 @@ import-normalize /* bring in normalize.css styles */
     max-width: 662px;
     width: 100%;
     color: #000;
-    margin-top: 17px;
+    word-break: break-all;
+    /* margin-top: 5px; */
 }
 .cv-dates{
     font-size: 16px;
     color: #909090;
     font-weight: 400px;
-    margin-top: 7px;
+    margin-top: 4px;
 }
 .cv-wrap{
     width: 100%;
-
 }
 .cv-photo{
     width: 246px;
@@ -61,7 +112,7 @@ import-normalize /* bring in normalize.css styles */
     object-fit: cover;
     border-radius: 133px;
     margin-top: 50px;
-border: 0;
+    border: 0;
 }
 .cv-photo:not([src]) {
     content:url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
@@ -109,7 +160,7 @@ border: 0;
 .staricon{
     position: absolute;
     left: 78px;
-    bottom: 44px;
+    bottom: 24px;
     width: 42px;
     height: 42px;
     object-fit: contain;
@@ -473,4 +524,7 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.buttons-none{
+    display: none;
 }

@@ -5,9 +5,10 @@ export default function Header(props){
     const nav=useNavigate()
     const handleClick=()=>{
         nav('/');
-        localStorage.removeItem('value')
-        localStorage.removeItem('recent-image')
-
+        // localStorage.removeItem('value')
+        // localStorage.removeItem('recent-image')
+        // localStorage.removeItem('item')
+        localStorage.clear();
     }
     return(
         <div className='wraper'>

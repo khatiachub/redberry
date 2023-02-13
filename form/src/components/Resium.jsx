@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLocation,useNavigate } from "react-router-dom"
 import staricon from '../images/1.png'
 import Cv from "./Cv";
@@ -8,8 +9,12 @@ export default function Resium(){
   const nav=useNavigate()
   const handleClick=()=>{
       nav('/');
+      localStorage.clear();
       localStorage.removeItem('value')
+      location.removeItem('recent-image')
+
   }
+  const[info,setInfo]=useState(location.state)
 
   return(
       <>
@@ -17,7 +22,6 @@ export default function Resium(){
          <i class="fa-solid fa-chevron-left"></i>
       </div>
          <div className="cv-wraper cv-wraper-resium" >
-                
                 <Cv
                   firstName={location.state.firstName}
                   lastName={location.state.lastName}
@@ -34,6 +38,13 @@ export default function Resium(){
                   degree={location.state.degree}
                   date={location.state.date}
                   text={location.state.text}
+                  url={location.state.image}
+                  info={info}
+                  extraexp={location.state.extraexp}
+                  extraedu={location.state.extraedu}
+                  extradatestart={location.state.extradatestart}
+                  extradateend={location.state.extradateend}
+                  extratextareas={location.state.extratextareas}
                   />
            </div>
       </>

@@ -6,15 +6,13 @@ import Cv from './Cv';
 import staricon from '../images/1.png'
 import redicon from '../images/v.png'
 
-
-
-
-
 export default function Step3(){
   const { register, handleSubmit, watch,reset, formState: { errors } } = useForm();
   const nav=useNavigate();
   const location=useLocation();
+  const[info,setInfo]=useState(location.state)
 
+  console.log(location);
   const[state,setState]=useState({
     position:'',
     degree:'',
@@ -52,24 +50,31 @@ const[value,setValue]=useState('')
 const[data,setData]=useState([])
   const onClick=()=>{
     nav('/Resium',
-    // {state:{
-      // firstName:location.state.firstName,
-      // lastName:location.state.lastName,
-      // textarea:location.state.textarea,
-      // email:location.state.email,
-      // number:location.state.number,
-      // exp:location.state.exp,
-      // edu:location.state.edu,
-      // datestart:location.state.datestart,
-      // dateend:location.state.dateend,
-      // textareas:location.state.textareas,
-      // position:state.position,
-      // degree:state.degree,
-      // date:state.date,
-      // text:state.text
-    // }}
+    {state:{
+      firstName:location.state.firstName,
+      lastName:location.state.lastName,
+      textarea:location.state.textarea,
+      email:location.state.email,
+      number:location.state.number,
+      image:location.state.image,
+      exp:location.state.exp,
+      edu:location.state.edu,
+      datestart:location.state.datestart,
+      dateend:location.state.dateend,
+      textareas:location.state.textareas,
+      position:state.position,
+      degree:state.degree,
+      date:state.date,
+      text:state.text,
+      extraexp:location.state.extraexp,
+      extraedu:location.state.extraedu,
+      extradatestart:location.state.extradatestart,
+      extradateend:location.state.extradateend,
+      extratextareas:location.state.textareas
+    }}
     )
-    // localStorage.removeItem('value');
+    localStorage.removeItem('value');
+    localStorage.removeItem('recent-image')
     localStorage.clear();
   }
   useEffect(() => {
@@ -79,6 +84,7 @@ const[data,setData]=useState([])
           setData(data)
         });
 }, []);
+
 
 const position = register('position', { required: true, minLength:2})
 const degree= register('degree',{ required:true})
@@ -209,6 +215,7 @@ const text=register('text',{required:true})
           </div>
        </form>
     </div>
+    
        <div 
        className="cv-wraper">
         <Cv
@@ -228,6 +235,12 @@ const text=register('text',{required:true})
          degree={state.degree}
          date={state.date}
          text={state.text}
+         info={info}
+         extraexp={location.state.extraexp}
+         extraedu={location.state.extraedu}
+         extradatestart={location.state.extradatestart}
+         extradateend={location.state.extradateend}
+         extratextareas={location.state.extratextareas}
         />
         </div>
      </div>
