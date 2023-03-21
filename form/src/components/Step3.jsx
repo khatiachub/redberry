@@ -85,7 +85,14 @@ const[data,setData]=useState([])
         });
 }, []);
 
-
+const navi=useNavigate()
+const handleClick=()=>{
+    navi('/');
+    // localStorage.removeItem('value')
+    // localStorage.removeItem('recent-image')
+    // localStorage.removeItem('item')
+    localStorage.clear();
+}
 const position = register('position', { required: true, minLength:2})
 const degree= register('degree',{ required:true})
 const date=register('date',{required:true})
@@ -93,6 +100,10 @@ const text=register('text',{required:true})
   return(
     <div className='form-div'>
     <div className='form-wraper'>
+       <div onClick={handleClick} className='back-arrow'>
+         <i class="fa-solid fa-chevron-left"></i>
+       </div>
+       <div className="form">
        <Header heading='განათლება' pages='3\3'/>
        <form className='form' action="" onSubmit={handleSubmit(onClick)}>
         <label
@@ -214,6 +225,7 @@ const text=register('text',{required:true})
              </button>
           </div>
        </form>
+       </div>
     </div>
     
        <div 

@@ -4,16 +4,18 @@ export default function Cv(props){
 const location=useLocation();
 console.log(location.pathname);
     return(
-        <div>
+        <div >
             <div className="cv-block">
+            <img className="cv-photo" src={props.url} />
             <div className="cv-wrap">
-                 <h1 className="cv-name">{props.firstName} {props.lastName}</h1>
+                 <h1 className="cv-name">{props.firstName} </h1>
+                 <h1 className="cv-name name">{props.lastName}</h1>
                  <h5 className="cv-email">{props.email}</h5>
                  <h5 className="cv-number">{props.number}</h5>
                  {props.textarea?<h2 className="cv-about">ჩემს შესახებ</h2>:null}
                  <p className="cv-textarea">{props.textarea}</p>
             </div>
-            <img className="cv-photo" src={props.url} />
+            {/* <img className="cv-photo" src={props.url} /> */}
             </div>
             {props.textarea?<div className={`${location.pathname==='/Step2'?'cv-line4':''}`} ></div>:null}
 

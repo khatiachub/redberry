@@ -109,11 +109,22 @@ export default function Step2(){
   const extradatestart=register('extradatestart',{required:false})
   const extradateend=register('extradateend',{required:false})
   const extratextareas=register('extratextareas',{required:false})
-
+  const navi=useNavigate()
+  const handleClick=()=>{
+      navi('/');
+      // localStorage.removeItem('value')
+      // localStorage.removeItem('recent-image')
+      // localStorage.removeItem('item')
+      localStorage.clear();
+  }
 
   return(
       <div className='form-div'>
         <div className='form-wraper'>
+        <div onClick={handleClick} className='back-arrow'>
+            <i class="fa-solid fa-chevron-left"></i>
+        </div>
+        <div className="form">
            <Header heading='გამოცდილება' pages='2\3'/>
            <form className='form' onSubmit={handleSubmit(onClick)} >
         <label className={`${errors.exp?'label-red':''}`} htmlFor="">თანამდებობა</label>
@@ -258,6 +269,7 @@ export default function Step2(){
                    </div>
                    </div>
                 </form>
+                </div>
               </div>
               <div className="cv-wraper">
                 <Cv

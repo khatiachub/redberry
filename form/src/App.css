@@ -6,14 +6,21 @@ import-normalize /* bring in normalize.css styles */
 .form-wraper{
     max-width: 1098px;
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
+    background-color: #fafafa; 
+    padding-top: 40px; 
+    padding-bottom: 50px;
+}
+.form-wrap{
+    max-width: 1098px;
+    width: 100%;
 }
 .form-div{
     display: flex;
-    background-color: #fafafa;
     width: 100%;
     justify-content: space-between;
     padding-bottom: 30px;
+    overflow: hidden;
 }
 .cv-wraper{
     background-color: #fff;
@@ -22,7 +29,9 @@ import-normalize /* bring in normalize.css styles */
     position: relative;
     overflow: hidden;
     padding-bottom: 30px;
-    height: 1080px;
+    /* height: 1080px; */
+    display: flex;
+    flex-direction: column;
 }
 .cv-line{
     background: #C8C8C8;
@@ -32,6 +41,7 @@ import-normalize /* bring in normalize.css styles */
     height: 1px;
     position: absolute;
     margin-left: 82px;
+    display: none;
 }
 .cv-line3{
     background: #C8C8C8;
@@ -41,6 +51,7 @@ import-normalize /* bring in normalize.css styles */
     height: 1px;
     position: absolute;
     margin-left: 82px;
+    display: none;
 }
 .cv-line4{
     background: #C8C8C8;
@@ -50,6 +61,7 @@ import-normalize /* bring in normalize.css styles */
     height: 1px;
     position: absolute;
     margin-left: 82px;
+    display: none;
 }
 .experienc{
     width: 100%;
@@ -63,6 +75,7 @@ import-normalize /* bring in normalize.css styles */
     background: #C8C8C8;
     max-width: 662px;
     width: 100%;
+    display: none;
     top: 38%;
     height: 1px;
     position: absolute;
@@ -89,9 +102,9 @@ import-normalize /* bring in normalize.css styles */
 }
 .cv-paragraph{
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 660;
     line-height: 24px;
-    max-width: 662px;
+    max-width: 300px;
     width: 100%;
     color: #000;
     word-break: break-all;
@@ -102,9 +115,6 @@ import-normalize /* bring in normalize.css styles */
     color: #909090;
     font-weight: 400px;
     margin-top: 4px;
-}
-.cv-wrap{
-    width: 100%;
 }
 .cv-photo{
     width: 246px;
@@ -125,6 +135,10 @@ import-normalize /* bring in normalize.css styles */
     width: 100%;
     margin: 0 auto;
     display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
 }
 .cv-name{
     font-size: 34px;
@@ -133,6 +147,9 @@ import-normalize /* bring in normalize.css styles */
     line-height: 42px;
     margin-top: 68px;
     word-break: break-all;
+}
+.name{
+    margin-top: 5px;
 }
 .cv-about{
     font-size: 18px;
@@ -170,7 +187,7 @@ import-normalize /* bring in normalize.css styles */
     font-weight: 400;
     color: #000;
     line-height: 22px;
-    max-width: 432px;
+    max-width: 400px;
     width: 100%;
     word-break: break-all;
     margin-top: 15px;
@@ -181,8 +198,8 @@ import-normalize /* bring in normalize.css styles */
     flex-direction: column;
     max-width: 798px;
     width: 100%;
-    margin-top: 77px;
-    margin-left: 150px;
+    margin: 0 auto;
+    /* margin-top: 77px; */
 }
 .input-name-div{
     display: flex;
@@ -353,9 +370,6 @@ textarea::placeholder{
 .image-input{
     display: none;
 }
-/* .image-input{ */
-    /* display: none; */
-/* } */
 .image-button{
     width: 107px;
     height: 27px;
@@ -388,6 +402,9 @@ textarea::placeholder{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 4vh;
+    left: 3vh;
 }
 .back-arrow-resium{
     background-color: #f9f9f9;
@@ -397,12 +414,10 @@ textarea::placeholder{
 
 .wraper{
     display: flex;
-    max-width: 900px;
     width: 100%;
     justify-content: space-between;
     align-items: baseline;
-    margin-left: 48px;
-    margin-top: 47px;
+    margin-bottom: 5vh;
 }
 .overlay{
     display: flex;
@@ -483,6 +498,7 @@ button{
     background-size: cover;
     position:relative;
     padding-top: 25px;
+    overflow: visible;
 }
 .redberry-img{
     width: 236px;
@@ -496,7 +512,7 @@ button{
     height: 299px;
     object-fit: contain;
     top: 473px;
-    right: 545px;
+    right: 27%;
     mix-blend-mode: multiply;
 }
 .redberry-wraper{
@@ -512,11 +528,12 @@ button{
     font-size: 20px;
     line-height: 24px;
     text-decoration: none;
-    width: 464px;
+    max-width: 464px;
+    width: 100%;
     height: 60px;
     background-color: #1A1A1A;
     border-radius: 8px;
-    top: 424px;
+    top: 500px;
     left: 50%;
     padding: 18px 60px 18px 60px;
     transform: translateX(-50%);
@@ -527,4 +544,326 @@ button{
 }
 .buttons-none{
     display: none;
+}
+
+
+/* responsive */
+@media(max-width:1720px){
+    .form-wraper{
+        width: 58%;
+        overflow: visible;
+        margin: 0 auto;
+        background-color: #fafafa;
+        margin-left: 0;
+        padding-bottom: 40px;
+    }
+    .form-div{
+        width: 100%;
+    }
+    .cv-wraper{
+        width: 42%;
+        overflow: visible;
+    }
+    .cv-block{
+        max-width: 565px;
+        width: 100%;
+    }
+    .cv-textarea{
+        max-width: 320px;
+        width: 100%;
+    }
+    .cv-photo{
+        width: 220px;
+        height: 220px;
+        margin-top: 70px;
+    }
+    .overlay{
+        width: 100%;
+    }
+    .cv-line{
+        display: none;
+    }
+    .cv-line2{
+        display: none;
+    }
+    .cv-line3{
+        display: none;
+    }
+    .cv-line4{
+        display: none;
+    }
+    .cv-lin5{
+        display: none;
+    }
+    
+}
+@media(max-width:1450px){
+    .form{
+        max-width: 598px;
+        width: 100%;
+    }
+    .input-name-div{
+        max-width: 598px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .textarea{
+        max-width: 598px;
+        width: 100%;
+    }
+    .input-email{
+        max-width: 598px;
+        width: 100%;
+    }
+    .input-name{
+        max-width: 290px;
+        width: 100%;
+    }
+    .namediv{
+        max-width: 290px;
+        width: 100%;
+    }
+    .wraper{
+        max-width: 700px;
+        width: 100%;
+    }
+    .overlay{
+        /* max-width: 598px; */
+        width: 100%;
+        margin: 0 auto;
+    }
+    .button{
+        margin-left: 450px;
+    }
+    .form-wraper{
+        width: 55%;
+    }
+    .cv-wraper{
+        width: 45%;
+    }
+    .cv-block{
+        max-width: 520px;
+        width: 100%;
+    }
+    .cv-textarea{
+        max-width: 270px;
+        width: 100%;
+    }    
+}
+@media(max-width:1200px){
+    .form{
+        max-width: 450px;
+        width: 100%;
+    }
+    .input-name-div{
+        max-width: 450px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .textarea{
+        max-width: 450px;
+        width: 100%;
+    }
+    .input-email{
+        max-width: 450px;
+        width: 100%;
+    }
+    .input-name{
+        max-width: 200px;
+        width: 100%;
+    }
+    .namediv{
+        max-width: 200px;
+        width: 100%;
+    }
+    .wraper{
+        max-width: 500px;
+        width: 100%;
+    }
+    .overlay{
+        max-width: 450px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .button{
+        margin-left: 300px;
+    }
+    .form-wraper{
+        width: 55%;
+    }
+    .cv-wraper{
+        width: 45%;
+    }
+    .cv-block{
+        max-width: 520px;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .cv-textarea{
+        max-width: 270px;
+        width: 100%;
+    }    
+}
+@media(max-width:1024px){
+    .form-div{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .form-wraper{
+        width: 100%;
+    }
+    .form{
+        max-width: 600px;
+        width: 100%;
+    }
+    .input-name-div{
+        max-width: 600px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .textarea{
+        max-width: 600px;
+        width: 100%;
+    }
+    .input-email{
+        max-width: 600px;
+        width: 100%;
+    }
+    .input-name{
+        max-width: 280px;
+        width: 100%;
+    }
+    .namediv{
+        max-width: 280px;
+        width: 100%;
+    }
+    .wraper{
+        max-width: 650px;
+        width: 100%;
+    }
+    .overlay{
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .button{
+        margin-left: 450px;
+        margin-top: 20px;
+    }
+    .cv-block{
+        max-width: 520px;
+        width: 100%;
+        flex-direction: column;
+        /* justify-content:baseline; */
+        align-items: baseline;
+        margin: 0 auto;
+    }
+    .cv-textarea{
+        max-width: 400px;
+        width: 100%;
+    }    
+    .cv-photo{
+        width: 246px;
+        height: 246px;
+        margin-left:0px;
+    }
+}
+@media(max-width:768px){
+    .form{
+        max-width: 450px;
+        width: 100%;
+    }
+    .input-name-div{
+        max-width: 450px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .textarea{
+        max-width: 450px;
+        width: 100%;
+    }
+    .input-email{
+        max-width: 450px;
+        width: 100%;
+    }
+    .input-name{
+        max-width: 220px;
+        width: 100%;
+    }
+    .namediv{
+        max-width: 220px;
+        width: 100%;
+    }
+    .resium-link{
+        max-width: 300px;
+        width: 100%;
+        font-size: 17px;
+    }
+    .redberry-img{
+        width: 160px;
+    }
+    .home-image{
+        width: 200px;
+        height: 200px;
+    }
+    .cv-name{
+        font-size: 25px;
+    }
+    .cv-number{
+        font-size: 16px;
+    }
+    .button{
+        margin-left: 300px;
+    }
+}
+@media(max-width:480px){
+    .cv-name{
+        font-size: 18px;
+    }
+    .cv-email{
+        font-size: 16px;
+    }
+    .form{
+        max-width:280px;
+        width: 100%;
+    }
+    .cv-block{
+        align-items: center;
+    }
+    .input-name-div{
+        max-width: 280px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .textarea{
+        max-width: 280px;
+        width: 100%;
+    }
+    .input-email{
+        max-width:280px;
+        width: 100%;
+    }
+    .input-name{
+        max-width:120px;
+        width: 100%;
+    }
+    .namediv{
+        max-width: 120px;
+        width: 100%;
+    }
+    .wraper{
+        max-width:350px;
+        width: 100%;
+    }
+    .overlay{
+        max-width:280px;
+        width: 100%;
+    }
+    .button{
+        margin-left: 180px;
+        width: 100px;
+    }
 }

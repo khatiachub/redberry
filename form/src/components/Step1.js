@@ -8,7 +8,6 @@ import redicon from '../images/v.png'
 // import staricon from '../images/1.png'
 
 
-
 function Step1() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: "all" });
   const nav = useNavigate();
@@ -67,6 +66,18 @@ const uploadImage=(e)=>{
     localStorage.setItem('value', JSON.stringify(value));
   }, [value]);
 
+  const handleClick=()=>{
+      nav('/');
+      // localStorage.removeItem('value')
+      // localStorage.removeItem('recent-image')
+      // localStorage.removeItem('item')
+        Object.keys(localStorage).forEach(function(key){
+          localStorage.removeItem(key)
+        })
+        localStorage.clear();
+
+  }
+
 
   const firstName = register('firstName', { required: true, pattern: /^[ა-ჰა-ჰ]+$/i, minLength: 2 })
   const lastName = register('lastName', { pattern: /^[ა-ჰა-ჰ]+$/i, required: true, minLength: 2 })
@@ -76,7 +87,11 @@ const uploadImage=(e)=>{
   return (
     <div className="form-div">
       <div className="form-wraper">
-      <Header heading='პირადი ინფო' pages='1\3' />
+      <div onClick={handleClick} className='back-arrow'>
+         <i class="fa-solid fa-chevron-left"></i>
+      </div>
+        <div className="form">
+        <Header heading='პირადი ინფო' pages='1\3' />
         <form className="form" onSubmit={handleSubmit(onClick)}>
           <div className="input-name-div">
             <div className="namediv">
@@ -177,9 +192,12 @@ const uploadImage=(e)=>{
             type="submit"
             className="button">შემდეგი</button>
         </form>
+        </div>
+
       </div>
       <div className="cv-wraper">
         <div className="cv-block">
+        <img className="cv-photo" src={ url} />
           <div className="cv-wrap">
             <h1 className="cv-name">{value.firstName} {value.lastName}</h1>
             <h5 className="cv-email">{value.email}</h5>
@@ -187,7 +205,7 @@ const uploadImage=(e)=>{
             {value.textarea ? <h2 className="cv-about">ჩემს შესახებ</h2> : null}
             <p className="cv-textarea">{value.textarea}</p>
           </div>
-          <img className="cv-photo" src={ url} />
+          {/* <img className="cv-photo" src={url} /> */}
         </div>
         {value.textarea?<div className="cv-line"></div>:null}
 
