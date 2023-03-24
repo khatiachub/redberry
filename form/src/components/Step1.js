@@ -88,7 +88,7 @@ const uploadImage=(e)=>{
         <div className="form">
         <Header heading='პირადი ინფო' pages='1\3' />
         <form className="form" onSubmit={handleSubmit(onClick)}>
-          <div  style={{marginTop:40,alignItems:'last baseline'}} className="input-name-div">
+          <div  style={{marginTop:60,alignItems:'last baseline'}} className="input-name-div">
             <div className="nameinput">
               <label className={`${errors.firstName?'label-red':''}`}>სახელი</label>
               <input
@@ -103,7 +103,7 @@ const uploadImage=(e)=>{
                   handleChange(e);
                 }}
               />
-              <img className={`red-icon ${errors.firstName ? 'red-icon-block' : 'red-icon'}`} src={redicon} alt="red icon" />
+              {/* <img className={`red-icon ${errors.firstName ? 'red-icon-block' : 'red-icon'}`} src={redicon} alt="red icon" /> */}
               <p className="name-criteria criteria">მინიმუმ 2 ასო, ქართული ასოები</p>
             </div>
             <div className="nameinput">
@@ -120,11 +120,11 @@ const uploadImage=(e)=>{
                   handleChange(e);
                 }}
               />
-              <img className={`red-icon ${errors.lastName ? 'red-icon-block' : 'red-icon'}`} src={redicon} alt="red icon" />
+              {/* <img className={`red-icon ${errors.lastName ? 'red-icon-block' : 'red-icon'}`} src={redicon} alt="red icon" /> */}
               <p className="name-criteria criteria">მინიმუმ 2 ასო, ქართული ასოები</p>
             </div>
           </div>
-          <div className="image-input-div">
+          <div style={{marginTop: 15}} className="image-input-div">
             <label  className={`${!url?'label-red':''}`} >პირადი ფოტოს ატვირთვა</label>
             <div onClick={() => document.querySelector('.image-input').click()} className='image-button' >ატვირთვა</div>
             <input
@@ -140,7 +140,7 @@ const uploadImage=(e)=>{
               }}
             />
           </div>
-          <label style={{marginTop:35}}>ჩემს შესახებ (არასავალდებულო)</label>
+          <label style={{marginTop:25}}>ჩემს შესახებ (არასავალდებულო)</label>
           <textarea
             className="textarea"
             placeholder="ზოგადი ინფო შენს შესახებ"
@@ -148,7 +148,7 @@ const uploadImage=(e)=>{
             value={value.textarea}
             {...register('textarea', { onChange: (e) => handleChange(e) })}
           />
-          <label style={{marginTop:35}} className={`${errors.email?'label-red':''}`}>ელ-ფოსტა</label>
+          <label style={{marginTop:25}} className={`${errors.email?'label-red':''}`}>ელ-ფოსტა</label>
           <div className="icon-wraper">
             <input
               placeholder="anzorr666@redberry.ge"
@@ -162,10 +162,10 @@ const uploadImage=(e)=>{
                 handleChange(e);
               }}
             />
-            <img className={`red-icon ${errors.email ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon" />
+            {/* <img className={`red-icon ${errors.email ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon" /> */}
           </div>
           <p className="name-criteria">უნდა მთავრდებოდეს @redberry.ge-ით</p>
-          <label style={{marginTop:35}} className={`${errors.number?'label-red':''}`}>მობილურის ნომერი</label>
+          <label style={{marginTop:15}} className={`${errors.number?'label-red':''}`}>მობილურის ნომერი</label>
           <div className="icon-wraper">
             <input
               placeholder="+995 551 12 34 56"
@@ -179,7 +179,7 @@ const uploadImage=(e)=>{
                 handleChange(e);
               }}
             />
-            <img className={`red-icon ${errors.number ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon" />
+            {/* <img className={`red-icon ${errors.number ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon" /> */}
           </div>
           <p className="name-criteria">უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს</p>
           <button
@@ -206,7 +206,7 @@ const uploadImage=(e)=>{
           <>
             <div className='cv-block'>
               <div className='cv-wrap'>
-                {location.state.edu ? <h2 style={{ marginTop: 50 }} className='cv-about'>გამოცდილება</h2> : null}
+                {location.state.edu ? <h2 style={{ marginTop: 20 }} className='cv-about'>გამოცდილება</h2> : null}
                 <h5 className='cv-number'>{location.state.edu} {location.state.exp}</h5>
                 <h6 className='cv-dates'>{location.state.datestart} {location.state.dateend}</h6>
                 <p className='cv-paragraph'>{location.state.textareas}</p>
@@ -221,7 +221,7 @@ const uploadImage=(e)=>{
             </div>
             <div className='cv-block'>
               <div className='cv-wrap'>
-                {location.state.position ? <h2 style={{ marginTop: 50 }} className='cv-about'>განათლება</h2> : null}
+                {location.state.position ? <h2 style={{ marginTop:0 }} className='cv-about'>განათლება</h2> : null}
                 <h5 className='cv-number'>{location.state.position} {location.state.degree}</h5>
                 <h6 className='cv-dates'>{location.state.date}</h6>
                 <p className='cv-paragraph'>{location.state.text}</p>

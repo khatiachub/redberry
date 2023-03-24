@@ -36,7 +36,7 @@ console.log(location.pathname);
             <img className="staricon" src={props.staricon} alt='star-icon'/>
 
               <div className='cv-wrap'>
-              {props.position?<h2 style={{marginTop:50}} className='cv-about'>განათლება</h2>:null}
+              {props.position?<h2 style={{marginTop:0}} className='cv-about'>განათლება</h2>:null}
               <h5 className='cv-number'>{props.position} {props.degree}</h5>
               <h6 className='cv-dates'>{props.date}</h6>
               <p className='cv-paragraph'>{props.text}</p>

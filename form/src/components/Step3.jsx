@@ -107,7 +107,7 @@ const text=register('text',{required:true})
        <Header heading='განათლება' pages='3\3'/>
        <form className='form' action="" onSubmit={handleSubmit(onClick)}>
         <label
-         style={{marginTop:40}}
+         style={{marginTop:18}}
          className={`${errors.position?'label-red':''}`}
          htmlFor="">სასწავლებელი
          </label>
@@ -124,7 +124,7 @@ const text=register('text',{required:true})
             handleChange(e); 
           }}
           />
-          <img className={`red-icon ${errors.position ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon" />
+          {/* <img className={`red-icon ${errors.position ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon" /> */}
           </div>
           <p 
           className='name-criteria'>
@@ -136,7 +136,7 @@ const text=register('text',{required:true})
             className='namediv'>
             <label
             className={`${errors.degree?'label-red':''}`}
-            style={{marginTop:35}}
+            style={{marginTop:15}}
             htmlFor="">ხარისხი</label>
             <select
             style={{outline:'none',marginTop:8,height:49}} 
@@ -164,13 +164,13 @@ const text=register('text',{required:true})
                 )
               })}
                </select>
-               <img className={`red-icon ${errors.degree? 'red-icon-date' : 'red-icon'}`} src={redicon} alt="red icon" />
+               {/* <img className={`red-icon ${errors.degree? 'red-icon-date' : 'red-icon'}`} src={redicon} alt="red icon" /> */}
             </div>
             <div
              className='namediv'>
                 <label
                 className={`${errors.date?'label-red':''}`}
-                style={{marginTop:35}}
+                style={{marginTop:15}}
                 htmlFor="">დამთავრების რიცხვი
                 </label>
                 <input 
@@ -184,7 +184,7 @@ const text=register('text',{required:true})
                   handleChange(e); 
                 }}
                   />
-                <img className={`red-icon ${errors.date? 'red-icon-date' : 'red-icon'}`} src={redicon} alt="red icon" />
+                {/* <img className={`red-icon ${errors.date? 'red-icon-date' : 'red-icon'}`} src={redicon} alt="red icon" /> */}
             </div>
           </div>
           <label
@@ -204,7 +204,7 @@ const text=register('text',{required:true})
            className={`${errors.text ? 'red-textarea' : 'textarea text'}`}
            placeholder='როლი თანამდებობაზე და ზოგადი აღწერა'>
            </textarea>
-           <img className={`red-icon ${errors.text? 'red-icons' : 'red-icon'}`} src={redicon} alt="red icon" />
+           {/* <img className={`red-icon ${errors.text? 'red-icons' : 'red-icon'}`} src={redicon} alt="red icon" /> */}
           </div>
           <div className='line'>
           </div>

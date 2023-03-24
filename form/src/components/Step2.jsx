@@ -127,7 +127,7 @@ export default function Step2(){
         <div className="form">
            <Header heading='გამოცდილება' pages='2\3'/>
            <form className='form' onSubmit={handleSubmit(onClick)} >
-        <label  style={{marginTop:35}} className={`${errors.exp?'label-red':''}`} htmlFor="">თანამდებობა</label>
+        <label  style={{marginTop:18}} className={`${errors.exp?'label-red':''}`} htmlFor="">თანამდებობა</label>
          <div className='icon-wraper'>
          <input
           value={state.exp}
@@ -141,12 +141,12 @@ export default function Step2(){
             handleChange(e); 
           }}
           />
-          <img className={`red-icon ${errors.exp ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon"/>
+          {/* <img className={`red-icon ${errors.exp ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon"/> */}
           </div>
           <p className='name-criteria'>მინიმუმ 2 სიმბოლო</p>
           <label
           className={`${errors.edu?'label-red':''}`}
-          style={{marginTop:35}}
+          style={{marginTop:15}}
            >დამსაქმებელი</label>
           <div className='icon-wraper'>
          <input
@@ -161,13 +161,13 @@ export default function Step2(){
             handleChange(e); 
           }}
           />
-          <img className={`red-icon ${errors.edu ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon"/>
+          {/* <img className={`red-icon ${errors.edu ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon"/> */}
           </div>
           <p className='name-criteria'>მინიმუმ 2 სიმბოლო</p>
-          <div  style={{marginTop:35}} className='input-name-div'>
+          <div  style={{marginTop:15}} className='input-name-div'>
             <div className='namediv'>
                <label 
-               className={`${errors.datestart?'label-red':''}`}
+               className={`${errors.datestart?'label-red':'datelabel'}`}
                >დაწყების რიცხვი</label>
                <input
                value={state.datestart}
@@ -180,11 +180,11 @@ export default function Step2(){
                   handleChange(e); 
                 }}
                 />
-               <img className={`red-icon ${errors.datestart ? 'red-icon-date' : 'red-icon'}`} src={redicon} alt=""/>
+               {/* <img className={`red-icon ${errors.datestart ? 'red-icon-date' : 'red-icon'}`} src={redicon} alt=""/> */}
             </div>
             <div className='namediv'>
                <label 
-               className={`${errors.dateend?'label-red':''}`}
+               className={`${errors.dateend?'label-red':'datelabel'}`}
                htmlFor="">დამთავრების რიცხვი
                </label>
                <input 
@@ -198,12 +198,12 @@ export default function Step2(){
                  handleChange(e); 
                }}
                />
-               <img className={`red-icon ${errors.dateend ? 'red-icon-date' : 'red-icon'}`} src={redicon} alt="red icon"/>
+               {/* <img className={`red-icon ${errors.dateend ? 'red-icon-date' : 'red-icon'}`} src={redicon} alt="red icon"/> */}
                 </div>
                </div>
                <label 
                className={`${errors.textareas?'label-red':''}`}
-               style={{marginTop:35}}              
+               style={{marginTop:25}}              
                htmlFor="">აღწერა
                </label>
                <div className='icon-wraper'>
@@ -218,7 +218,7 @@ export default function Step2(){
                 handleChange(e); 
                }}
                 />
-              <img className={`red-icon ${errors.textareas ? 'red-icons' : 'red-icon'}`} src={redicon} alt="red icon"/>
+              {/* <img className={`red-icon ${errors.textareas ? 'red-icons' : 'red-icon'}`} src={redicon} alt="red icon"/> */}
               </div>
               <div className='line'></div>
           
@@ -294,7 +294,7 @@ export default function Step2(){
                 {data===null?null:
                <div className='cv-block'>
                    <div className='cv-wrap'>
-                   {location.state.position?<h2 style={{marginTop:50}} className='cv-about'>განათლება</h2>:null}
+                   {location.state.position?<h2 style={{marginTop:0}} className='cv-about'>განათლება</h2>:null}
                    <h5 className='cv-number'>{location.state.position}  {location.state.degree}</h5>
                    <h6 className='cv-dates'>{location.state.date}</h6>
                    <p className='cv-paragraph'>{location.state.text}</p>
