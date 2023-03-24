@@ -101,7 +101,7 @@ const text=register('text',{required:true})
     <div className='form-div'>
     <div className='form-wraper'>
        <div onClick={handleClick} className='back-arrow'>
-         <i class="fa-solid fa-chevron-left"></i>
+          <i class="fa-solid fa-chevron-left"></i>
        </div>
        <div className="form">
        <Header heading='განათლება' pages='3\3'/>
@@ -227,7 +227,6 @@ const text=register('text',{required:true})
        </form>
        </div>
     </div>
-    
        <div 
        className="cv-wraper">
         <Cv

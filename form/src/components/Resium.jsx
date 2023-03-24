@@ -21,7 +21,7 @@ export default function Resium(){
       <div onClick={handleClick} className='back-arrow back-arrow-resium'>
          <i class="fa-solid fa-chevron-left"></i>
       </div>
-         <div className="cv-wraper cv-wraper-resium" >
+         <div className=" cv-wraper-resium" >
                 <Cv
                   firstName={location.state.firstName}
                   lastName={location.state.lastName}

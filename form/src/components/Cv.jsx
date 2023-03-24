@@ -15,10 +15,7 @@ console.log(location.pathname);
                  {props.textarea?<h2 className="cv-about">ჩემს შესახებ</h2>:null}
                  <p className="cv-textarea">{props.textarea}</p>
             </div>
-            {/* <img className="cv-photo" src={props.url} /> */}
             </div>
-            {props.textarea?<div className={`${location.pathname==='/Step2'?'cv-line4':''}`} ></div>:null}
-
             <div className='cv-block'>
              <div className='cv-wrap'>
                   {props.exp?<h2 style={{marginTop:50}} className='cv-about'>გამოცდილება</h2>:null}
@@ -35,9 +32,9 @@ console.log(location.pathname);
                    <p className='cv-paragraph'>{props.extratextareas}</p>
               </div>
              </div>}
-             {props.text?<div className={`${location.pathname==='/Step2'?'cv-line3':''}`} ></div>:null}
-            <img className="staricon" src={props.staricon} alt='star-icon'/>
             <div className='cv-block'>
+            <img className="staricon" src={props.staricon} alt='star-icon'/>
+
               <div className='cv-wrap'>
               {props.position?<h2 style={{marginTop:50}} className='cv-about'>განათლება</h2>:null}
               <h5 className='cv-number'>{props.position} {props.degree}</h5>

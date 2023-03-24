@@ -43,7 +43,7 @@ export default function Step2(){
       extraedu:state.extraedu,
       extradatestart:state.extradatestart,
       extradateend:state.extradateend,
-      extratextareas:state.textareas
+      extratextareas:state.extratextareas
     }
   })
   }
@@ -58,7 +58,7 @@ export default function Step2(){
       extraedu:state.extraedu,
       extradatestart:state.extradatestart,
       extradateend:state.extradateend,
-      extratextareas:state.textareas,
+      extratextareas:state.extratextareas,
       position:location.state.position,
       degree:location.state.degree,
       date:location.state.date,
@@ -293,8 +293,6 @@ export default function Step2(){
                       <p className='cv-paragraph'>{state.extratextareas}</p>
                  </div>
                 </div>
-                {state.textareas?<div className="cv-line3" style={{top:'30%'}}></div>:null}
-
                 {data===null?null:
                <div className='cv-block'>
                    <div className='cv-wrap'>
@@ -304,8 +302,6 @@ export default function Step2(){
                    <p className='cv-paragraph'>{location.state.text}</p>
                    </div>
                </div>}
-               {state.textareas?<div className="cv-line3" style={{top:'50%'}}></div>:null}
-
           </div>
        </div>
       )

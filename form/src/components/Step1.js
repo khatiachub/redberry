@@ -81,7 +81,7 @@ const uploadImage=(e)=>{
 
   const firstName = register('firstName', { required: true, pattern: /^[ა-ჰა-ჰ]+$/i, minLength: 2 })
   const lastName = register('lastName', { pattern: /^[ა-ჰა-ჰ]+$/i, required: true, minLength: 2 })
-  const images = register('image', {required:true })
+  const images = register('image')
   const number = register('number', { required: true, pattern:/^(\+?995)?(79\d{7}|5\d{8})$/ })
   const email = register('email', { required: true, pattern: /^[A-Za-z0-9._%+-]+@redberry\.ge$/ })
   return (
@@ -207,8 +207,6 @@ const uploadImage=(e)=>{
           </div>
           {/* <img className="cv-photo" src={url} /> */}
         </div>
-        {value.textarea?<div className="cv-line"></div>:null}
-
         {datta === null ? null :
           <>
             <div className='cv-block'>
@@ -218,14 +216,12 @@ const uploadImage=(e)=>{
                 <h6 className='cv-dates'>{location.state.datestart} {location.state.dateend}</h6>
                 <p className='cv-paragraph'>{location.state.textareas}</p>
               </div>
-              {location.state.textareas?<div className="cv-line2"></div>:null}
 
             </div>
             <div className='cv-block'>
             <div className='cv-wrap'>
-                  {/* {location.state.extraexp?<h2 style={{marginTop:50}} className='cv-about'>გამოცდილება</h2>:null} */}
-                  <h5 className='cv-number'>{location.state.extraedu}, {location.state.extraexp}</h5>
-                  <h6 className='cv-dates'>{location.state.extradatestart}, {location.state.extradateend}</h6>
+                  <h5 className='cv-number'>{location.state.extraedu} {location.state.extraexp}</h5>
+                  <h6 className='cv-dates'>{location.state.extradatestart} {location.state.extradateend}</h6>
                   <p className='cv-paragraph'>{location.state.extratextareas}</p>
              </div>
             </div>
@@ -237,7 +233,6 @@ const uploadImage=(e)=>{
                 <p className='cv-paragraph'>{location.state.text}</p>
               </div>
             </div>
-            {location.state.text?<div className="cv-line"></div>:null}
           </>}
       </div>
     </div>

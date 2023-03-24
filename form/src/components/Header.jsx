@@ -16,7 +16,7 @@ export default function Header(props){
                 {/* <i class="fa-solid fa-chevron-left"></i> */}
            {/* </div> */}
            <div className='overlay'>
-              <h2>{props.heading}</h2>
+              <h2 className="info-heading">{props.heading}</h2>
               <h5>{props.pages}</h5>
            </div>
         </div>
