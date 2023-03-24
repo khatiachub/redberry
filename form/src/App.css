@@ -161,19 +161,18 @@ import-normalize /* bring in normalize.css styles */
     justify-content:space-between;
 }
 .image-label{
-    margin-top: 54px;
     width: 232px;
     color: #000;
 }
-.text-label{
-    margin-top: 54px;
-}
-.email-label{
-    margin-top: 33px;
-}
-.number-label{
-    margin-top: 33px;
-}
+/* .text-label{ */
+    /* margin-top: 54px; */
+/* } */
+/* .email-label{ */
+    /* margin-top: 33px; */
+/* } */
+/* .number-label{ */
+    /* margin-top: 33px; */
+/* } */
 input{
     margin-top: 8px;
     outline: none;
@@ -295,7 +294,7 @@ textarea::placeholder{
     height: 18px;
     position: absolute;
     right: -26px;
-    top:40px;
+    top:50px;
 }
 .red-icon-date{
     display: block;
@@ -303,7 +302,7 @@ textarea::placeholder{
     height: 18px;
     position: absolute;
     right: -30px;
-    top:70px;
+    top:90px;
 }
 .input-email{
     max-width: 798px;
@@ -319,6 +318,7 @@ textarea::placeholder{
     max-width: 320px;
     width: 100%;
     justify-content: space-between;
+    margin-top: 40px;
 }
 .image-input{
     display: none;
@@ -397,12 +397,14 @@ textarea::placeholder{
     font-weight: 500;
     line-height: 19.54px;
     color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .button{
     width: 151px;
     height: 48px;
     background-color: #6B40E3;
-    margin-top: 100px;
+    margin-top: 40px;
     border: none;
     border-radius: 4px;
     color: #fff;
@@ -434,6 +436,9 @@ button{
 .button-next{
     margin-top: 0px;
     padding: 0 20px 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .line{
     max-width: 798px;
@@ -447,13 +452,13 @@ button{
 .home-wraper{
     max-width: 1920px;
     width: 100%;
-    height: 1080px;
+    height: 1000px;
     background-image: url(../src/images/shutterstock_2189773743\ 1\ \(3\).jpg);
     background-repeat: no-repeat;
     background-size: cover;
     position:relative;
     padding-top: 25px;
-    overflow: visible;
+    overflow: hidden;
 }
 .redberry-img{
     width: 236px;
@@ -473,8 +478,9 @@ button{
 .redberry-wraper{
     max-width: 1780px;
     width: 100%;
-    height: 70px;
-    border-bottom: 1px solid #1A1A1A;
+    height: 1px;
+    background-color: #1A1A1A;
+    /* border-bottom: 1px solid #1A1A1A; */
     margin: 0 auto;
 }
 .resium-link{
@@ -693,7 +699,7 @@ button{
         margin: 0 auto;
     }
     .cv-block{
-        max-width: 500px;
+        /* max-width: 800px; */
         width: 100%;
         flex-direction: column;
         margin:0 auto; 
@@ -701,9 +707,9 @@ button{
         align-items: center;
     }
     .cv-wrap{
-        padding-left: 60px;
-        max-width: 310px;
+        max-width: 320px;
         width: 100%;
+        padding-left: 60px;
     }
     .staricon{
         left: 17px;
@@ -729,12 +735,12 @@ button{
         width: 100%;
         justify-content: space-between;
     }
-    .textarea{
-        max-width: 450px;
+    .nameinput{
+        max-width: 220px;
         width: 100%;
     }
-    .cv-block{
-        max-width: 480px;
+    .textarea{
+        max-width: 450px;
         width: 100%;
     }
     .cv-photo{
@@ -764,6 +770,9 @@ button{
         width: 200px;
         height: 200px;
     }
+    .name-criteria{
+        width: 250px;
+    }
     .cv-name{
         font-size: 25px;
     }
@@ -778,15 +787,11 @@ button{
     .cv-email{
         font-size: 16px;
     }
-    .cv-block{
-        max-width: 310px;
-        width: 100%;
-    }
-    .cv-block{
-        max-width: 280px;
-        width: 100%;
-    }
     .form{
+        max-width:310px;
+        width: 100%;
+    }
+    .image-input-div{
         max-width:310px;
         width: 100%;
     }
@@ -794,11 +799,20 @@ button{
         max-width: 310px;
         width: 100%;
         justify-content: space-between;
-        align-items:last baseline;
         height: 110px;
+        align-items: flex-end;
+    }
+    .nameinput{
+        max-width: 150px;
+        width: 100%;
+    }
+    .criteria{
+        max-width: 150px;
+        width: 100%;
     }
     .exp-button{
         width: 310px;
+        font-size: 13px;
     }
     .textarea{
         max-width: 310px;
@@ -816,6 +830,10 @@ button{
         max-width: 150px;
         width: 100%;
     }
+    label{
+        font-size: 15px;
+    }
+
     .wraper{
         max-width:380px;
         width: 100%;
@@ -836,10 +854,19 @@ button{
         max-width:260px;
         width: 100%;
     }
+    .image-input-div{
+        max-width:250px;
+        width: 100%;
+        align-items:flex-start;
+    }
     .input-name-div{
         max-width: 250px;
         width: 100%;
         justify-content: space-between;
+    }
+    .nameinput{
+        max-width: 100px;
+        width: 100%;
     }
     .exp-button{
         width: 260px;
@@ -867,11 +894,12 @@ button{
     .overlay{
         max-width:250px;
         width: 100%;
+        margin-right: 10px;
     }
     .back-arrow{
-        width: 25px;
-        height: 25px;
-        font-size: 15px;
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
         right: 40px;
     }
     .button{
@@ -883,5 +911,8 @@ button{
     }
     .info-heading{
         font-size: 16px;
+    }
+    .image-button{
+        margin-right: 5px;
     }
 }

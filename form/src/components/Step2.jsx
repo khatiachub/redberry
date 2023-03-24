@@ -127,7 +127,7 @@ export default function Step2(){
         <div className="form">
            <Header heading='გამოცდილება' pages='2\3'/>
            <form className='form' onSubmit={handleSubmit(onClick)} >
-        <label className={`${errors.exp?'label-red':''}`} htmlFor="">თანამდებობა</label>
+        <label  style={{marginTop:35}} className={`${errors.exp?'label-red':''}`} htmlFor="">თანამდებობა</label>
          <div className='icon-wraper'>
          <input
           value={state.exp}
@@ -146,7 +146,7 @@ export default function Step2(){
           <p className='name-criteria'>მინიმუმ 2 სიმბოლო</p>
           <label
           className={`${errors.edu?'label-red':''}`}
-          style={{marginTop:33}}
+          style={{marginTop:35}}
            >დამსაქმებელი</label>
           <div className='icon-wraper'>
          <input
@@ -164,11 +164,10 @@ export default function Step2(){
           <img className={`red-icon ${errors.edu ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon"/>
           </div>
           <p className='name-criteria'>მინიმუმ 2 სიმბოლო</p>
-          <div className='input-name-div'>
+          <div  style={{marginTop:35}} className='input-name-div'>
             <div className='namediv'>
                <label 
                className={`${errors.datestart?'label-red':''}`}
-               style={{marginTop:33}}
                >დაწყების რიცხვი</label>
                <input
                value={state.datestart}
@@ -186,7 +185,6 @@ export default function Step2(){
             <div className='namediv'>
                <label 
                className={`${errors.dateend?'label-red':''}`}
-               style={{marginTop:33}}                    
                htmlFor="">დამთავრების რიცხვი
                </label>
                <input 
@@ -205,7 +203,7 @@ export default function Step2(){
                </div>
                <label 
                className={`${errors.textareas?'label-red':''}`}
-               style={{marginTop:33}}              
+               style={{marginTop:35}}              
                htmlFor="">აღწერა
                </label>
                <div className='icon-wraper'>

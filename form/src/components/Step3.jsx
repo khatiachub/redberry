@@ -107,7 +107,8 @@ const text=register('text',{required:true})
        <Header heading='განათლება' pages='3\3'/>
        <form className='form' action="" onSubmit={handleSubmit(onClick)}>
         <label
-        className={`${errors.position?'label-red':''}`}
+         style={{marginTop:40}}
+         className={`${errors.position?'label-red':''}`}
          htmlFor="">სასწავლებელი
          </label>
          <div className='icon-wraper'>
@@ -130,12 +131,12 @@ const text=register('text',{required:true})
             მინიმუმ 2 სიმბოლო
             </p>
           <div
-           className='input-name-div'>
+           className='input-name-div inputname'>
             <div
             className='namediv'>
             <label
             className={`${errors.degree?'label-red':''}`}
-            style={{marginTop:33}}
+            style={{marginTop:35}}
             htmlFor="">ხარისხი</label>
             <select
             style={{outline:'none',marginTop:8,height:49}} 
@@ -169,7 +170,7 @@ const text=register('text',{required:true})
              className='namediv'>
                 <label
                 className={`${errors.date?'label-red':''}`}
-                style={{marginTop:33}}
+                style={{marginTop:35}}
                 htmlFor="">დამთავრების რიცხვი
                 </label>
                 <input 
@@ -188,7 +189,7 @@ const text=register('text',{required:true})
           </div>
           <label
             className={`${errors.text?'label-red':''}`}
-            style={{marginTop:33}}
+            style={{marginTop:35}}
             htmlFor="">განათლების აღწერა
            </label>
            <div className='icon-wraper'>

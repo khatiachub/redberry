@@ -11,7 +11,7 @@ export default function Experience(props){
 
     return(
             <form className='form newform' onSubmit={props.handleSubmit(props.onClick)} >
-              <label className={`${props.errorsexp?'label-red':''}`} htmlFor="">თანამდებობა</label>
+              <label  style={{marginTop:40}} className={`${props.errorsexp?'label-red':''}`} htmlFor="">თანამდებობა</label>
                <div className='icon-wraper'>
                <input
                 value={props.expvalue}
@@ -30,7 +30,7 @@ export default function Experience(props){
                 <p className='name-criteria'>მინიმუმ 2 სიმბოლო</p>
                 <label
                 className={`${props.errorsedu?'label-red':''}`}
-                style={{marginTop:33}}
+                style={{marginTop:35}}
                  >დამსაქმებელი</label>
                 <div className='icon-wraper'>
                <input
@@ -52,7 +52,7 @@ export default function Experience(props){
                   <div className='namediv'>
                      <label 
                      className={`${props.errorsdatestart?'label-red':''}`}
-                     style={{marginTop:33}}
+                     style={{marginTop:35}}
                      >დაწყების რიცხვი</label>
                      <input
                      value={props.valuedatestart}
@@ -70,7 +70,7 @@ export default function Experience(props){
                   <div className='namediv'>
                      <label 
                      className={`${props.errorsdateend?'label-red':''}`}
-                     style={{marginTop:33}}                    
+                     style={{marginTop:35}}                    
                      htmlFor="">დამთავრების რიცხვი
                      </label>
                      <input 
@@ -89,7 +89,7 @@ export default function Experience(props){
                      </div>
                      <label 
                      className={`${props.errorstextareas?'label-red':''}`}
-                     style={{marginTop:33}}              
+                     style={{marginTop:35}}              
                      htmlFor="">აღწერა
                      </label>
                      <div className='icon-wraper'>

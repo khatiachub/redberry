@@ -68,17 +68,12 @@ const uploadImage=(e)=>{
 
   const handleClick=()=>{
       nav('/');
-      // localStorage.removeItem('value')
-      // localStorage.removeItem('recent-image')
-      // localStorage.removeItem('item')
         Object.keys(localStorage).forEach(function(key){
           localStorage.removeItem(key)
         })
         localStorage.clear();
 
   }
-
-
   const firstName = register('firstName', { required: true, pattern: /^[ა-ჰა-ჰ]+$/i, minLength: 2 })
   const lastName = register('lastName', { pattern: /^[ა-ჰა-ჰ]+$/i, required: true, minLength: 2 })
   const images = register('image')
@@ -93,8 +88,8 @@ const uploadImage=(e)=>{
         <div className="form">
         <Header heading='პირადი ინფო' pages='1\3' />
         <form className="form" onSubmit={handleSubmit(onClick)}>
-          <div className="input-name-div">
-            <div className="namediv">
+          <div  style={{marginTop:40,alignItems:'last baseline'}} className="input-name-div">
+            <div className="nameinput">
               <label className={`${errors.firstName?'label-red':''}`}>სახელი</label>
               <input
                 name="firstName"
@@ -109,9 +104,9 @@ const uploadImage=(e)=>{
                 }}
               />
               <img className={`red-icon ${errors.firstName ? 'red-icon-block' : 'red-icon'}`} src={redicon} alt="red icon" />
-              <p className="name-criteria">მინიმუმ 2 ასო, ქართული ასოები</p>
+              <p className="name-criteria criteria">მინიმუმ 2 ასო, ქართული ასოები</p>
             </div>
-            <div className="namediv">
+            <div className="nameinput">
               <label className={`${errors.lastName?'label-red':''}`}>გვარი</label>
               <input
                 placeholder="მუმლაძე"
@@ -126,11 +121,11 @@ const uploadImage=(e)=>{
                 }}
               />
               <img className={`red-icon ${errors.lastName ? 'red-icon-block' : 'red-icon'}`} src={redicon} alt="red icon" />
-              <p className="name-criteria">მინიმუმ 2 ასო, ქართული ასოები</p>
+              <p className="name-criteria criteria">მინიმუმ 2 ასო, ქართული ასოები</p>
             </div>
           </div>
           <div className="image-input-div">
-            <label className={`${!url?'label-red':''}`} >პირადი ფოტოს ატვირთვა</label>
+            <label  className={`${!url?'label-red':''}`} >პირადი ფოტოს ატვირთვა</label>
             <div onClick={() => document.querySelector('.image-input').click()} className='image-button' >ატვირთვა</div>
             <input
               className="image-input"
@@ -145,7 +140,7 @@ const uploadImage=(e)=>{
               }}
             />
           </div>
-          <label className="text-label">ჩემს შესახებ (არასავალდებულო)</label>
+          <label style={{marginTop:35}}>ჩემს შესახებ (არასავალდებულო)</label>
           <textarea
             className="textarea"
             placeholder="ზოგადი ინფო შენს შესახებ"
@@ -153,7 +148,7 @@ const uploadImage=(e)=>{
             value={value.textarea}
             {...register('textarea', { onChange: (e) => handleChange(e) })}
           />
-          <label style={{marginTop:33}} className={`${errors.email?'label-red':''}`}>ელ-ფოსტა</label>
+          <label style={{marginTop:35}} className={`${errors.email?'label-red':''}`}>ელ-ფოსტა</label>
           <div className="icon-wraper">
             <input
               placeholder="anzorr666@redberry.ge"
@@ -170,7 +165,7 @@ const uploadImage=(e)=>{
             <img className={`red-icon ${errors.email ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon" />
           </div>
           <p className="name-criteria">უნდა მთავრდებოდეს @redberry.ge-ით</p>
-          <label style={{marginTop:33}} className={`${errors.number?'label-red':''}`}>მობილურის ნომერი</label>
+          <label style={{marginTop:35}} className={`${errors.number?'label-red':''}`}>მობილურის ნომერი</label>
           <div className="icon-wraper">
             <input
               placeholder="+995 551 12 34 56"
@@ -216,7 +211,6 @@ const uploadImage=(e)=>{
                 <h6 className='cv-dates'>{location.state.datestart} {location.state.dateend}</h6>
                 <p className='cv-paragraph'>{location.state.textareas}</p>
               </div>
-
             </div>
             <div className='cv-block'>
             <div className='cv-wrap'>
