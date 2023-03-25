@@ -194,7 +194,8 @@ const uploadImage=(e)=>{
         <div className="cv-block">
         <img className="cv-photo" src={ url} />
           <div className="cv-wrap">
-            <h1 className="cv-name">{value.firstName} {value.lastName}</h1>
+            <h1 className="cv-name">{value.firstName}</h1>
+            <h1 className="cv-name">{value.lastName}</h1>
             <h5 className="cv-email">{value.email}</h5>
             <h5 className="cv-number">{value.number}</h5>
             {value.textarea ? <h2 className="cv-about">ჩემს შესახებ</h2> : null}
