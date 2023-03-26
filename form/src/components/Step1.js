@@ -88,7 +88,7 @@ const uploadImage=(e)=>{
         <div className="form">
         <Header heading='პირადი ინფო' pages='1\3' />
         <form className="form" onSubmit={handleSubmit(onClick)}>
-          <div  style={{marginTop:55,marginBottom:1,alignItems:'last baseline'}} className="input-name-div">
+          <div  style={{alignItems:'last baseline'}} className="input-name-div">
             <div className="nameinput">
               <label className={`${errors.firstName?'label-red':''}`}>სახელი</label>
               <input
