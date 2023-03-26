@@ -88,7 +88,7 @@ const uploadImage=(e)=>{
         <div className="form">
         <Header heading='პირადი ინფო' pages='1\3' />
         <form className="form" onSubmit={handleSubmit(onClick)}>
-          <div  style={{marginTop:60,alignItems:'last baseline'}} className="input-name-div">
+          <div  style={{marginTop:55,marginBottom:1,alignItems:'last baseline'}} className="input-name-div">
             <div className="nameinput">
               <label className={`${errors.firstName?'label-red':''}`}>სახელი</label>
               <input
@@ -124,7 +124,7 @@ const uploadImage=(e)=>{
               <p className="name-criteria criteria">მინიმუმ 2 ასო, ქართული ასოები</p>
             </div>
           </div>
-          <div style={{marginTop: 15}} className="image-input-div">
+          <div style={{marginTop: 23,marginBottom:7}} className="image-input-div">
             <label  className={`${!url?'label-red':''}`} >პირადი ფოტოს ატვირთვა</label>
             <div onClick={() => document.querySelector('.image-input').click()} className='image-button' >ატვირთვა</div>
             <input
