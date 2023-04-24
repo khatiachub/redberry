@@ -164,7 +164,7 @@ export default function Step2(){
           {/* <img className={`red-icon ${errors.edu ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon"/> */}
           </div>
           <p className='name-criteria'>მინიმუმ 2 სიმბოლო</p>
-          <div  style={{marginTop:15}} className='input-name-div'>
+          <div  className='input-name-div'>
             <div className='namediv'>
                <label 
                className={`${errors.datestart?'label-red':'datelabel'}`}

@@ -88,9 +88,6 @@ const[data,setData]=useState([])
 const navi=useNavigate()
 const handleClick=()=>{
     navi('/');
-    // localStorage.removeItem('value')
-    // localStorage.removeItem('recent-image')
-    // localStorage.removeItem('item')
     localStorage.clear();
 }
 const position = register('position', { required: true, minLength:2})
@@ -124,7 +121,6 @@ const text=register('text',{required:true})
             handleChange(e); 
           }}
           />
-          {/* <img className={`red-icon ${errors.position ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon" /> */}
           </div>
           <p 
           className='name-criteria'>
@@ -164,7 +160,6 @@ const text=register('text',{required:true})
                 )
               })}
                </select>
-               {/* <img className={`red-icon ${errors.degree? 'red-icon-date' : 'red-icon'}`} src={redicon} alt="red icon" /> */}
             </div>
             <div
              className='namediv'>
@@ -184,7 +179,6 @@ const text=register('text',{required:true})
                   handleChange(e); 
                 }}
                   />
-                {/* <img className={`red-icon ${errors.date? 'red-icon-date' : 'red-icon'}`} src={redicon} alt="red icon" /> */}
             </div>
           </div>
           <label
@@ -204,7 +198,6 @@ const text=register('text',{required:true})
            className={`${errors.text ? 'red-textarea' : 'textarea text'}`}
            placeholder='როლი თანამდებობაზე და ზოგადი აღწერა'>
            </textarea>
-           {/* <img className={`red-icon ${errors.text? 'red-icons' : 'red-icon'}`} src={redicon} alt="red icon" /> */}
           </div>
           <div className='line'>
           </div>
