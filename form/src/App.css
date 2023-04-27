@@ -165,7 +165,7 @@ import-normalize /* bring in normalize.css styles */
     max-width: 798px;
     width: 100%;
     justify-content:space-between;
-    margin-top: 5vh;
+    margin-top: 8vh;
 }
 .image-label{
     width: 232px;
@@ -464,6 +464,7 @@ button{
     background-position: center;
     background-size: cover;
     padding-top: 25px;
+    overflow-y: hidden;
 }
 .redberry-img{
     width: 236px;
