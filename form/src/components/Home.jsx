@@ -8,7 +8,7 @@ export default function Home(){
     const[allCategory,setAllcategory]=useState(false)
     useEffect(()=>{
         if(!allCategory)return;
-        document.body.className="body-scroll-off"
+        document.body.style="body-scroll-off"
     },[allCategory])
     return(
         <div className="home-wraper">

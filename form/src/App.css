@@ -464,7 +464,6 @@ button{
     background-position: center;
     background-size: cover;
     padding-top: 25px;
-    overflow-y: hidden;
 }
 
 .redberry-img{
