@@ -8,12 +8,12 @@ export default function Home(){
     const[allCategory,setAllcategory]=useState(false)
     useEffect(()=>{
         if(!allCategory)return;
-        document.body.style="body-scroll-off"
+        document.body.style/*  */="body-scroll-off"
     },[allCategory])
     return(
         <div className="home-wraper">
-            <img className="redberry-img" src={redlogo} alt="redberry logo" />
             <div className="redberry-wraper">
+               <img className="redberry-img" src={redlogo} alt="redberry logo" />
             </div>
             <Link className="resium-link" to={'/Step1'}>რეზიუმეს დამატება</Link>
             <img className="home-image" src={logo} alt="logo" />

@@ -3,10 +3,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom"
 import { useForm } from 'react-hook-form'
 import Header from "./Header";
-import redicon from '../images/v.png'
-// import greenicon from '../images/i.png'
-// import staricon from '../images/1.png'
-
+import Cv from "./Cv";
 
 function Step1() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: "all" });
@@ -39,46 +36,46 @@ const uploadImage=(e)=>{
     })
     reader.readAsDataURL(file);
   }
- 
   useEffect(() => {
     setUrl(localStorage.getItem('recent-image'));
    },[])
-     
-  const onClick = () => {
-    nav('/Step2', {
-      state: {
-        firstName: value.firstName,
-        lastName: value.lastName,
-        textarea: value.textarea,
-        email: value.email,
-        number: value.number,
-        image:url
-      }
-    })
-  }
-  useEffect(() => {
-    const dataImg = JSON.parse(localStorage.getItem('value'));
-    if (dataImg) {
-      setValues(dataImg);
+
+
+   useEffect(() => {
+    const savedState = localStorage.getItem('myState');
+    if (savedState) {
+      setValues(JSON.parse(savedState));
     }
   }, []);
-  useEffect(() => {
-    localStorage.setItem('value', JSON.stringify(value));
+   useEffect(() => {
+    localStorage.setItem('myState', JSON.stringify(value));
   }, [value]);
-
+     
+  const onClick = () => {
+    if(!url){
+      return
+    }else{
+      nav('/Step2', {
+        state: {
+          private:value,
+          image:url,
+          education:position?.education,
+          formData:position?.formData
+        }
+      })
+    }
+  }
   const handleClick=()=>{
       nav('/');
-        Object.keys(localStorage).forEach(function(key){
-          localStorage.removeItem(key)
-        })
-        localStorage.clear();
-
+      localStorage.clear();
   }
   const firstName = register('firstName', { required: true, pattern: /^[ა-ჰა-ჰ]+$/i, minLength: 2 })
   const lastName = register('lastName', { pattern: /^[ა-ჰა-ჰ]+$/i, required: true, minLength: 2 })
   const images = register('image')
   const number = register('number', { required: true, pattern:/^(\+?995)?(79\d{7}|5\d{8})$/ })
   const email = register('email', { required: true, pattern: /^[A-Za-z0-9._%+-]+@redberry\.ge$/ })
+
+  const position=location.state
   return (
     <div className="form-div">
       <div className="form-wraper">
@@ -191,6 +188,7 @@ const uploadImage=(e)=>{
 
       </div>
       <div className="cv-wraper">
+      <h1 style={{textAlign:'center',color:'#F93B1D'}}>ჩემი რეზიუმე</h1>
         <div className="cv-block">
         <img className="cv-photo" src={ url} />
           <div className="cv-wrap">
@@ -201,33 +199,76 @@ const uploadImage=(e)=>{
             {value.textarea ? <h2 className="cv-about">ჩემს შესახებ</h2> : null}
             <p className="cv-textarea">{value.textarea}</p>
           </div>
-          {/* <img className="cv-photo" src={url} /> */}
         </div>
         {datta === null ? null :
           <>
             <div className='cv-block'>
               <div className='cv-wrap'>
-                {location.state.edu ? <h2 style={{ marginTop: 20 }} className='cv-about'>გამოცდილება</h2> : null}
-                <h5 className='cv-number'>{location.state.edu} {location.state.exp}</h5>
-                <h6 className='cv-dates'>{location.state.datestart} {location.state.dateend}</h6>
-                <p className='cv-paragraph'>{location.state.textareas}</p>
+                 <p>{position.pos&&position.pos.map((element,i)=>{
+                  return(
+                    <>
+                    <h5 className='cv-number'>
+                    {element.pos}
+                    </h5>
+                    </>
+                  )
+                 })}</p>
+                   <p>{position.emp&&position.emp.map((element,i)=>{
+                  return(
+                    <>
+                    <h5 className='cv-number'>
+                    {element.emp}
+                    </h5>
+                    </>
+                  )
+                 })}</p>
+                 
+                 <p>{position.start&&position.start.map((element,i)=>{
+                  return(
+                    <>
+                    <h5 className='cv-dates'>
+                    {element.start}
+                    </h5>
+                    </>
+                  )
+                 })}</p>
+
+                 <p>{position.end&&position.end.map((element,i)=>{
+                  return(
+                    <>
+                    <h5 className='cv-dates'>
+                    {element.end}
+                    </h5>
+                    </>
+                  )
+                 })}</p>
+                 <p>{position.text&&position.text.map((element,i)=>{
+                  return(
+                    <>
+                    <h5 className='cv-paragraph'>
+                    {element.text}
+                    </h5>
+                    </>
+                  )
+                 })}</p>
               </div>
             </div>
-            <div className='cv-block'>
-            <div className='cv-wrap'>
-                  <h5 className='cv-number'>{location.state.extraedu} {location.state.extraexp}</h5>
-                  <h6 className='cv-dates'>{location.state.extradatestart} {location.state.extradateend}</h6>
-                  <p className='cv-paragraph'>{location.state.extratextareas}</p>
-             </div>
-            </div>
-            <div className='cv-block'>
-              <div className='cv-wrap'>
-                {location.state.position ? <h2 style={{ marginTop:0 }} className='cv-about'>განათლება</h2> : null}
-                <h5 className='cv-number'>{location.state.position} {location.state.degree}</h5>
-                <h6 className='cv-dates'>{location.state.date}</h6>
-                <p className='cv-paragraph'>{location.state.text}</p>
-              </div>
-            </div>
+            <Cv
+                //  firstName={value.firstName}
+                //  lastName={value.lastName}
+                //  email={value.email}
+                //  number={value.number}
+                //  url={url}
+                //  textarea={value.textarea}
+                 cvphoto='cv-photo'
+                 cvwrap='cv-wrap'
+                 date={position.education?.date}
+                 text={position.education?.text}
+                 degree={position.education?.degree}
+                 positiion={position.education?.positiion}
+                 state={position.education}
+                 formData={position.formData}
+              />
           </>}
       </div>
     </div>

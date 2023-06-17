@@ -10,11 +10,10 @@ export default function Resium(){
   const handleClick=()=>{
       nav('/');
       localStorage.clear();
-      localStorage.removeItem('value')
-      location.removeItem('recent-image')
-
   }
-  const[info,setInfo]=useState(location.state)
+  const formData=location.state.formData
+  const privateData=location.state.privateData
+  const education=location.state
 
   return(
       <>
@@ -23,28 +22,21 @@ export default function Resium(){
       </div>
          <div className=" cv-wraper-resium" >
                 <Cv
-                  firstName={location.state.firstName}
-                  lastName={location.state.lastName}
-                  email={location.state.email}
-                  number={location.state.number}
-                  textarea={location.state.textarea}
-                  edu={location.state.edu}
-                  exp={location.state.exp}
+                  firstName={privateData.firstName}
+                  lastName={privateData.lastName}
+                  email={privateData.email}
+                  number={privateData.number}
+                  textarea={privateData.textarea}
+                  cvphoto='cv-photo'
+                  cvwrap='cv-wrap'
                   staricon={staricon}
-                  datestart={location.state.datestart}
-                  dateend={location.state.dateend}
-                  textareas={location.state.textareas}
-                  position={location.state.position}
-                  degree={location.state.degree}
-                  date={location.state.date}
-                  text={location.state.text}
+                  formData={formData}
+                  positiion={education.education.positiion}
+                  degree={education.education.degree}
+                  date={education.education.date}
+                  text={education.education.text}
                   url={location.state.image}
-                  info={info}
-                  extraexp={location.state.extraexp}
-                  extraedu={location.state.extraedu}
-                  extradatestart={location.state.extradatestart}
-                  extradateend={location.state.extradateend}
-                  extratextareas={location.state.extratextareas}
+                  state={education.education}
                   />
            </div>
       </>

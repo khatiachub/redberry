@@ -1,306 +1,307 @@
-import { useForm } from 'react-hook-form'
-import { useLocation, useNavigate } from "react-router-dom"
+import { useForm,useFieldArray,useWatch,Controller } from 'react-hook-form';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from './Header';
-import '../App.css'
+import '../App.css';
 import { useEffect, useState } from 'react';
-import staricon from '../images/1.png'
+import staricon from '../images/1.png';
 import Cv from './Cv';
-import redicon from '../images/v.png'
-import Experience from './Experience';
-export default function Step2(){
-  const { register, handleSubmit,getValues, reset, formState: { errors} } = useForm({mode:'all'});
-  const nav=useNavigate();
-  const location=useLocation();
-  const[data,setData]=useState(location.state)
-  console.log(location);
-  const[state,setState]=useState({
-    exp:'',
-    edu:'',
-    datestart:'',
-    dateend:'',
-    textareas:'',
-    extraexp:'',
-    extraedu:'',
-    extradatestart:'',
-    extradateend:'',
-    extratextareas:''
-  })
+export default function Step2() {
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    control,
+    getValues,
+    watch,
+    setValue,
+    formState: { errors}} = useForm({})
   
-  const onClick=()=>{
-    nav('/Step3',{state:{
-      firstName:location.state.firstName,
-      lastName:location.state.lastName,
-      textarea:location.state.textarea,
-      email:location.state.email,
-      number:location.state.number,
-      image:location.state.image,
-      exp:state.exp,
-      edu:state.edu,
-      datestart:state.datestart,
-      dateend:state.dateend,
-      textareas:state.textareas,
-      extraexp:state.extraexp,
-      extraedu:state.extraedu,
-      extradatestart:state.extradatestart,
-      extradateend:state.extradateend,
-      extratextareas:state.extratextareas
+    // const { fields, append } = useFieldArray({
+    //   control,
+    //   // name:'pos'
+    // });
+    const { fields: posFields } = useFieldArray({
+      control,
+      name: 'pos'
+    });
+    
+    const { fields: empFields } = useFieldArray({
+      control,
+      name: 'emp'
+    });
+    
+    const { fields: startFields } = useFieldArray({
+      control,
+      name: 'start'
+    });
+    const { fields: endFields } = useFieldArray({
+      control,
+      name: 'end'
+    });
+    
+    const { fields: textFields } = useFieldArray({
+      control,
+      name: 'text'
+    });
+    
+    const position= watch('pos');
+    const employer=watch('emp')
+    const datestart=watch('start')
+    const dateend=watch('end')
+    const textarea=watch('text')
+  
+    
+
+  const nav = useNavigate();
+  const location = useLocation();
+  
+  const onClick = (data) => {
+    nav('/Step3', {
+      state: {
+        privateData:educate.private,
+        image: location.state.image,
+        formData:data,
+      },
+    });
+  };
+ 
+
+
+
+
+
+
+  const onHandleClicks = () => {
+    nav('/Step1', {
+      state: {
+        pos:position,
+        emp:employer,
+        start:datestart,
+        end:dateend,
+        textareas:textarea,
+        education:educate.education,
+        formData:educate.formData,
+      },
+    });
+  };
+  const[form,setForm]=useState([{}])
+
+  const navi = useNavigate();
+  const handleClick = () => {
+    navi('/');
+  };
+ 
+  const onClickButton = () => {
+    setForm([
+      ...form,
+      {
+      pos: '',
+      emp:'',
+      start:'',
+      end:'',
+      text:''
     }
-  })
-  }
-  const onHandleClicks=()=>{
-    nav('/Step1',{state:{
-      exp:state.exp,
-      edu:state.edu,
-      datestart:state.datestart,
-      dateend:state.dateend,
-      textareas:state.textareas,
-      extraexp:state.extraexp,
-      extraedu:state.extraedu,
-      extradatestart:state.extradatestart,
-      extradateend:state.extradateend,
-      extratextareas:state.extratextareas,
-      position:location.state.position,
-      degree:location.state.degree,
-      date:location.state.date,
-      text:location.state.text
-    }
-  })
-  console.log(state);
-  }
-  const[click,setClick]=useState(true)
+  ])
+  // append({
+  //   pos: '',
+  //   emp:'',
+  //   start:'',
+  //   end:'',
+  //   text:''
+  // })
+};
 
-  const handleChange=(e,i)=>{
-    const name=e.target.name
-    const value=e.target.value
-    setState({...state,[name]:value})
-  }
-  const[form,setForm]=useState([])
+const educate=location.state
+// const formData=location.state.formData
 
-  const onClickButton=()=>{
-    setForm([...form,[]])
-  }
-  useEffect(() => {
-    const data = window.localStorage.getItem('item');
-    if ( data !== null ) setForm(JSON.parse(data));
-  }, []);
-  useEffect(() => {
-    window.localStorage.setItem('item', JSON.stringify(form));
-  }, [form]);
-
-
-
-
-  useEffect(() => {
-    const data = window.localStorage.getItem('value');
-    if ( data !== null ) setState(JSON.parse(data));
-  }, []);
-  useEffect(() => {
-    window.localStorage.setItem('value', JSON.stringify(state));
-  }, [state]);
-
-  const exp = register('exp', { required: true, minLength:2})
-  const edu= register('edu',{ required:true, minLength:2})
-  const datestart=register('datestart',{required:true})
-  const dateend=register('dateend',{required:true})
-  const textareas=register('textareas',{required:true})
-
-  const extraexp = register('extraexp',{ required:false})
-  const extraedu=register('extraedu',{required:false})
-  const extradatestart=register('extradatestart',{required:false})
-  const extradateend=register('extradateend',{required:false})
-  const extratextareas=register('extratextareas',{required:false})
-  const navi=useNavigate()
-  const handleClick=()=>{
-      navi('/');
-      // localStorage.removeItem('value')
-      // localStorage.removeItem('recent-image')
-      // localStorage.removeItem('item')
-      localStorage.clear();
-  }
-
-  return(
-      <div className='form-div'>
-        <div className='form-wraper'>
+  return (
+    <div className='form-div'>
+      <div className='form-wraper'>
         <div onClick={handleClick} className='back-arrow'>
-            <i class="fa-solid fa-chevron-left"></i>
+          <i class='fa-solid fa-chevron-left'></i>
         </div>
-        <div className="form">
-           <Header heading='გამოცდილება' pages='2\3'/>
-           <form className='form' onSubmit={handleSubmit(onClick)} >
-        <label  style={{marginTop:18}} className={`${errors.exp?'label-red':''}`} htmlFor="">თანამდებობა</label>
-         <div className='icon-wraper'>
-         <input
-          value={state.exp}
-          name='exp'
-          className={`${errors.exp ? 'red-border' : 'input-email'}`}
-          placeholder='დეველოპერი, დიზაინერი, ა.შ.'
-          type="text" 
-          {...exp}
-          onChange={(e) => {
-           exp.onChange(e); 
-            handleChange(e); 
-          }}
-          />
-          {/* <img className={`red-icon ${errors.exp ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon"/> */}
-          </div>
-          <p className='name-criteria'>მინიმუმ 2 სიმბოლო</p>
-          <label
-          className={`${errors.edu?'label-red':''}`}
-          style={{marginTop:15}}
-           >დამსაქმებელი</label>
-          <div className='icon-wraper'>
-         <input
-         value={state.edu}
-         name='edu'
-         className={`${errors.edu ? 'red-border' : 'input-email'}`}
-         placeholder='დამსაქმებელი'
-          type="text" 
-          {...edu}
-          onChange={(e) => {
-            edu.onChange(e); 
-            handleChange(e); 
-          }}
-          />
-          {/* <img className={`red-icon ${errors.edu ? 'red-icon-blocks' : 'red-icon'}`} src={redicon} alt="red icon"/> */}
-          </div>
-          <p className='name-criteria'>მინიმუმ 2 სიმბოლო</p>
-          <div  className='input-name-div'>
-            <div className='namediv'>
-               <label 
-               className={`${errors.datestart?'label-red':'datelabel'}`}
-               >დაწყების რიცხვი</label>
-               <input
-               value={state.datestart}
-               name='datestart'
-                type="date" 
-                className={`input-name ${errors.datestart ? 'red' : 'input-name'}`}
-                {...datestart}
-                onChange={(e) => {
-                  datestart.onChange(e); 
-                  handleChange(e); 
-                }}
-                />
-               {/* <img className={`red-icon ${errors.datestart ? 'red-icon-date' : 'red-icon'}`} src={redicon} alt=""/> */}
-            </div>
-            <div className='namediv'>
-               <label 
-               className={`${errors.dateend?'label-red':'datelabel'}`}
-               htmlFor="">დამთავრების რიცხვი
-               </label>
-               <input 
-               value={state.dateend}
-               name='dateend'
-               type="date" 
-               className={`input-name ${errors.dateend ? 'red' : 'input-name'}`}
-               {...dateend}
-               onChange={(e) => {
-                 dateend.onChange(e); 
-                 handleChange(e); 
-               }}
-               />
-               {/* <img className={`red-icon ${errors.dateend ? 'red-icon-date' : 'red-icon'}`} src={redicon} alt="red icon"/> */}
-                </div>
-               </div>
-               <label 
-               className={`${errors.textareas?'label-red':''}`}
-               style={{marginTop:25}}              
-               htmlFor="">აღწერა
-               </label>
-               <div className='icon-wraper'>
-               <textarea
-               value={state.textareas}
-               name='textareas'
-               className={`textarea text ${errors.textareas ? 'red-textarea' : 'textarea text'}`}
-               placeholder='როლი თანამდებობაზე და ზოგადი აღწერა'
-                {...textareas}
-                onChange={(e) => {
-                 textareas.onChange(e); 
-                handleChange(e); 
-               }}
-                />
-              {/* <img className={`red-icon ${errors.textareas ? 'red-icons' : 'red-icon'}`} src={redicon} alt="red icon"/> */}
-              </div>
-              <div className='line'></div>
-          
-           {form.map((item,i)=>{
+        <div className='form'>
+          <Header heading='გამოცდილება' pages='2\3' />
+          {form&&form.map((item,i)=>{
             return(
-              <div key={i} className='experienc'>
-                <Experience
-                    key={i}
-                    handleSubmit={handleSubmit}
-                    onClick={onClick}
-                    errorsexp={errors.extraexp}
-                    expvalue={state.extraexp}
-                    expname={extraexp}
-                    experience={extraexp}
-                    handleChange={handleChange}
-                    errorsedu={errors.extraedu}
-                    nameedu='extraedu'
-                    eduvalue={state.extraedu}
-                    emp={extraedu}
-                    errorsdatestart={errors.extradatestart}
-                    valuedatestart={state.extradatestart}
-                    namedatestart='extradatestart'
-                    start={extradatestart}
-                    errorsdateend={errors.extradateend}
-                    valuedateend={state.extradateend}
-                    namedateend='dateend'
-                    end={extradateend}
-                    errorstextareas={errors.extratextareas}
-                    valuetextareas={state.extratextareas}
-                    nametextareas='extratextareas'
-                    textareas={extratextareas}
-                    onHandleClicks={onHandleClicks}
-                    reset={reset}
-                    form={form}
-                    setForm={setForm}
-                    click={false}
-                    />
-                 </div>
-                  )
-                 })}
-                   <div className=''>
-                   <button onClick={onClickButton}  type='button' className='exp-button'>მეტი გამოცდილების დამატება</button>
-                   <div className='buttons-div'>
-                      <button onClick={onHandleClicks} type='button' className='button-back'>უკან</button>
-                      <button  onClick={reset} className='button button-next' type='submit'>შემდეგი</button>
-                   </div>
-                   </div>
-                </form>
-                </div>
+              <>
+            <form key={item.id} className='form' onSubmit={handleSubmit(onClick)}>
+            <label
+              style={{ marginTop: 30}}
+              className={`${errors.pos?.[i]?.pos ? 'label-red' : ''}`}
+            >
+              თანამდებობა
+            </label>
+            <div className='icon-wraper'>
+              <input
+                name={`pos.${i}.pos`}
+                className={`${errors.pos?.[i]?.pos ?'red-border' : 'input-email'}`}
+                placeholder='დეველოპერი, დიზაინერი, ა.შ.'
+                type='text'
+                {...register(`pos.${i}.pos`, { required: true, minLength: 2 })}  
+              />
+
+              
+            </div>
+            <p className='name-criteria'>მინიმუმ 2 სიმბოლო</p>
+            <label
+              className={`${errors.emp?.[i]?.emp ? 'label-red' : ''}`}
+              style={{ marginTop: 15 }}
+            >
+              დამსაქმებელი
+            </label>
+            <div className='icon-wraper'>
+              <input
+                name={`emp${i}.emp`}
+                className={`${errors.emp?.[i]?.emp ? 'red-border' : 'input-email'}`}
+                placeholder='დამსაქმებელი'
+                type='text'
+                {...register(`emp.${i}.emp`, { required: true, minLength: 2 })}   
+              />
+            </div>
+            <p className='name-criteria'>მინიმუმ 2 სიმბოლო</p>
+            <div className='input-name-div' style={{ marginTop: 15 }}>
+              <div className='namediv'>
+                <label
+                  className={`${errors.start?.[i]?.start ?'label-red' : 'datelabel'}`}
+                >
+                  დაწყების რიცხვი
+                </label>
+                <input
+                  name={`start${i}.start`}
+                  type='date'
+                  className={`input-name ${
+                    errors.start?.[i]?.start? 'red' : 'input-name'
+                  }`}
+                  {...register(`start.${i}.start`, { required: true, minLength: 2 })}   
+
+                />
               </div>
-              <div className="cv-wraper">
-                <Cv
-                    firstName={location.state.firstName}
-                    lastName={location.state.lastName}
-                    url={location.state.image}
-                    email={location.state.email}
-                    number={location.state.number}
-                    textarea={location.state.textarea}
-                    edu={state.edu}
-                    exp={state.exp}
-                    staricon={staricon}
-                    datestart={state.datestart}
-                    dateend={state.dateend}
-                    textareas={state.textareas}
-                 />
-                 <div className='cv-block'>
-                <div className='cv-wrap'>
-                      <h5 className='cv-number'>{state.extraedu}  {state.extraexp}</h5>
-                      <h6 className='cv-dates'>{state.extradatestart}  {state.extradateend}</h6>
-                      <p className='cv-paragraph'>{state.extratextareas}</p>
-                 </div>
-                </div>
-                {data===null?null:
-               <div className='cv-block'>
-                   <div className='cv-wrap'>
-                   {location.state.position?<h2 style={{marginTop:0}} className='cv-about'>განათლება</h2>:null}
-                   <h5 className='cv-number'>{location.state.position}  {location.state.degree}</h5>
-                   <h6 className='cv-dates'>{location.state.date}</h6>
-                   <p className='cv-paragraph'>{location.state.text}</p>
-                   </div>
-               </div>}
+              <div className='namediv'>
+                <label
+                  className={`${errors.end?.[i]?.end? 'label-red' : 'datelabel'}`}
+                  htmlFor=''
+                >
+                  დამთავრების რიცხვი
+                </label>
+                <input
+                  name={`pos.${i}.end`}
+                  type='date'
+                  className={`input-name ${
+                    errors.end?.[i]?.end ?'red' : 'input-name'
+                  }`}
+                  {...register(`end.${i}.end`, { required: true, minLength: 2 })}   
+                />
+              </div>
+            </div>
+            <label
+              className={`${errors.text?.[i]?.text ?'label-red' : ''}`}
+              style={{ marginTop: 25 }}
+              htmlFor=''
+            >
+              აღწერა
+            </label>
+            <div className='icon-wraper'>
+              <textarea
+                name={`text${i}.text`}
+                className={`textarea text ${
+                  errors.text?.[i]?.text ? 'red-textarea' : 'textarea text'
+                }`}
+                placeholder='როლი თანამდებობაზე და ზოგადი აღწერა'
+                {...register(`text.${i}.text`, { required: true, minLength: 2 })}   
+              />
+            </div>
+            <div className='line'></div>
+            <button className='submit-button' style={{display:'none'}} type='submit'></button>
+            </form>
+            
+            </>
+           )})}
+            <div className=''>
+              <button
+                onClick={onClickButton}               
+                type='button'
+                className='exp-button'
+              >
+                მეტი გამოცდილების დამატება
+              </button>
+              <div className='buttons-div'>
+                <button
+                  onClick={onHandleClicks}
+                  type='button'
+                  className='button-back'
+                >
+                  უკან
+                </button>
+                <button
+                  onClick={() => document.querySelector('.submit-button').click()}
+                  className='button button-next'
+                  type='submit'
+                >
+                  შემდეგი
+                </button>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div className='cv-wraper'>
+        <h1 style={{ textAlign: 'center', color: '#F93B1D' }}>ჩემი რეზიუმე</h1>
+        <Cv
+          firstName={educate.private?.firstName}
+          lastName={educate.private?.lastName}
+          url={educate.image}
+          cvphoto='cv-photo'
+          cvwrap='cv-wrap'
+          email={educate.private?.email}
+          number={educate.private?.number}
+          textarea={educate.private?.textarea}
+          staricon={staricon}
+          state={educate.education}
+          date={educate.education?.date}
+          text={educate.education?.text}
+          degree={educate.education?.degree}
+          positiion={educate.education?.positiion}
+          // formData={educate.formData}
+        />
+        <div className='cv-block'>
+          <div className='cv-wrap'>
+           
+                    {/* <h2 style={{ marginTop: 30 }} className='cv-about'>
+                       გამოცდილება
+                    </h2> */}
+                   
+                    
+                    {position&&position.map((element,i)=>{
+                    return(
+                    <>
+                    <h5 className='cv-number' key={element.id}>{element.pos}</h5>
+                    </>
+                     )
+                    })}
+                    {employer&&employer.map((element,i)=>{
+                    return(
+                    <h5 className='cv-number' key={element.id}>{element.emp}</h5>
+                     )
+                    })}
+                    {datestart&&datestart.map((element,i)=>{
+                    return(
+                    <h6 className='cv-dates' key={element.id}>{element.start}</h6>
+                     )
+                    })}
+                    {dateend&&dateend.map((element,i)=>{
+                    return(
+                    <p className='cv-dates' key={element.id}>{element.end}</p>
+                     )
+                    })}
+                    {textarea&&textarea.map((element,i)=>{
+                    return(
+                    <p className='cv-paragraph' key={element.id}>{element.text}</p>
+                     )
+                    })}
           </div>
-       </div>
-      )
-   }
+        </div>
+      </div>
+    </div>
+  );
+}

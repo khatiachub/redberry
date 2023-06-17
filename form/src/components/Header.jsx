@@ -1,15 +1,12 @@
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 
 
 export default function Header(props){
-    const nav=useNavigate()
-    const handleClick=()=>{
-        nav('/');
-        // localStorage.removeItem('value')
-        // localStorage.removeItem('recent-image')
-        // localStorage.removeItem('item')
-        localStorage.clear();
-    }
+    // const nav=useNavigate()
+    // const handleClick=()=>{
+    //     nav('/');
+    //     localStorage.clear();
+    // }
     return(
         <div className='wraper'>
            {/* <div onClick={handleClick} className='back-arrow'> */}
