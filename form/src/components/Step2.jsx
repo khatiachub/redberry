@@ -66,12 +66,6 @@ export default function Step2() {
     });
   };
  
-
-
-
-
-
-
   const onHandleClicks = () => {
     nav('/Step1', {
       state: {

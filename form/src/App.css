@@ -30,6 +30,7 @@ import-normalize /* bring in normalize.css styles */
     flex-direction: column;
     display: inline-flex;
     line-height: normal;
+    min-height: 100vh;
 }
 .experienc{
     width: 100%;

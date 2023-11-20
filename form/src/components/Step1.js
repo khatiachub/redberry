@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { useForm } from 'react-hook-form'
 import Header from "./Header";
 import Cv from "./Cv";
+import staricon from '../images/1.png';
 
 function Step1() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: "all" });
@@ -27,6 +28,7 @@ function Step1() {
 
 const uploadImage=(e)=>{
   upLoader(e.target.files[0]);
+  setErrorImage(false)
 }
   const upLoader = (file) => {
     const reader = new FileReader();
@@ -51,9 +53,10 @@ const uploadImage=(e)=>{
     localStorage.setItem('myState', JSON.stringify(value));
   }, [value]);
      
+  const[errorImage,setErrorImage]=useState(false)
   const onClick = () => {
     if(!url){
-      return
+      setErrorImage(true)
     }else{
       nav('/Step2', {
         state: {
@@ -122,7 +125,7 @@ const uploadImage=(e)=>{
             </div>
           </div>
           <div style={{marginTop: 23,marginBottom:7}} className="image-input-div">
-            <label  className={`${!url?'label-red':''}`} >პირადი ფოტოს ატვირთვა</label>
+            <label  className={`${errorImage?'label-red':''}`} >პირადი ფოტოს ატვირთვა</label>
             <div onClick={() => document.querySelector('.image-input').click()} className='image-button' >ატვირთვა</div>
             <input
               className="image-input"
@@ -270,6 +273,7 @@ const uploadImage=(e)=>{
                  formData={position.formData}
               />
           </>}
+          <img className="staricon" src={staricon}/>
       </div>
     </div>
   )
